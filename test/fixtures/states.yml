@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  the_key: 1
+  name: MyString
+  user_id_integer: MyString
+  global: false
+
+two:
+  the_key: 1
+  name: MyString
+  user_id_integer: MyString
+  global: false

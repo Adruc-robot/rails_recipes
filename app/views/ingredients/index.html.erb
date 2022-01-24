@@ -1,0 +1,35 @@
+<p style="color: green"><%= notice %></p>
+<h1>Ingredients</h1>
+<%= link_to "New ingredient", new_ingredient_path %>
+<div id="ingredients" class="content-scroller">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <% if current_user.admin %>
+          <th>Creator Email</th>
+          <th>Global</th>
+          <th>Store Location</th>
+          <th>Ingredient State</th>
+        <% end %>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @ingredients.each do |ingredient| %>
+        <tr>
+          <td><%= ingredient.name %></td>
+          <% if current_user.admin %>
+            <td><%= User.find_by(id: ingredient.user_id).email %></td>
+            <td><%= ingredient.global %></td>
+            <td><%= Location.find_by(id: ingredient.location_id).name %>
+            <td><%= State.find_by(id: ingredient.state_id).name %>
+          <% end %>
+            <td><%= link_to "View", ingredient %></td>
+            <td><%= button_to "Delete", ingredient, method: :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

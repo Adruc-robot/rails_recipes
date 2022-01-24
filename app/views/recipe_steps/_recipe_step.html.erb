@@ -1,0 +1,27 @@
+<div id="<%= dom_id recipe_step %>">
+  <p>
+    <strong>Recipe:</strong>
+    <%#= Recipe.find_by(id: recipe_step.recipe_id).name %>
+    <%= recipe_step.recipe_id %>
+  </p>
+
+  <p>
+    <strong>Step number:</strong>
+    <%= recipe_step.step_number %>
+  </p>
+
+  <p>
+    <strong>Step text:</strong>
+    <%= recipe_step.step_text %>
+  </p>
+  <% if current_user.admin %>
+    <p>
+      <strong>User:</strong>
+      <%= User.find_by(id: recipe_step.user_id).email %>  
+    </p>
+    <p>
+      <strong>Global:</strong>
+      <%= recipe_step.global %>
+    </p>
+  <% end %>
+</div>

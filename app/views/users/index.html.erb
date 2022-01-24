@@ -1,0 +1,17 @@
+
+<table class="pretty_data_table_boop table">
+    <thead>
+        <tr>
+            <th>user id</th>
+            <th>email</th>
+            <th>admin</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+        <tr>
+            <td><%= user.id %></td>
+            <td><%= user.email %></td>
+            <td><%= user.admin %></td>
+        </tr>
+        <% end %>

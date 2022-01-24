@@ -1,0 +1,16 @@
+<div id="<%= dom_id state%>">
+  <p>
+    <strong>Name:</strong>
+    <%= recipe.name %>
+  </p>
+  <% if current_user.admin %>
+    <p>
+      <strong>User:</strong>
+      <%= User.find_by(id: recipe.user_id).email %>  
+    </p>
+    <p>
+      <strong>Global:</strong>
+      <%= recipe.global %>
+    </p>
+  <% end %>
+</div>

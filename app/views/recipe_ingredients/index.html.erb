@@ -1,0 +1,45 @@
+<p style="color: green"><%= notice %></p>
+<h1>Recipe ingredients</h1>
+<%= link_to "New recipe ingredient", new_recipe_ingredient_path %>
+<div id="recipe_ingredients" class="content-scroller">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Recipe Name</th>
+        <th>Recipe ID</th>
+        <th>Ingredient Name</th>
+        <th>Ingredient ID</th>
+        <th>Unit Name</th>
+        <th>Unit ID</th>
+        <th>Preparation Instructions</th>
+        <% if current_user.admin %>
+          <th>User ID</th>
+          <th>Global</th>
+        <% end %>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recipe_ingredients.each do |recipe_ingredient| %>
+        <tr>
+          <td><%= Recipe.find_by(id: recipe_ingredient.recipe_id).name %></td>
+          <td><%= recipe_ingredient.recipe_id %></td>
+          <td><%= Ingredient.find_by(id: recipe_ingredient.ingredient_id).name %></td>
+          <td><%= recipe_ingredient.ingredient_id %></td>
+          <td><%#= Unit.find_by(id: recipe_ingredient.unit_id).name %></td>
+          <td><%= recipe_ingredient.unit_id %></td>
+          <td><%= recipe_ingredient.prep_instructions %></td>
+          <% if current_user.admin %>
+            <td><%= User.find_by(id: recipe_ingredient.user_id).email %></td>
+            <td><%= recipe_ingredient.global %></td>
+          <% end %>
+            <td><%= link_to "View", recipe_ingredient %></td>
+            <td><%= button_to "Delete", recipe_ingredient, method: :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+

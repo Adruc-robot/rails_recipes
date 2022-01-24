@@ -1,0 +1,25 @@
+<div id="<%= dom_id ingredient %>">
+
+  <p>
+    <strong>Name:</strong>
+    <%= ingredient.name %>
+  </p>
+  <p>
+    <strong>State_id:</strong>
+    <%= ingredient.state_id %>
+  </p>
+  <p>
+    <strong>Location_id:</strong>
+    <%= Location.find_by(id: ingredient.location_id).name %>
+  </p>
+  <p>
+    <strong>User:</strong>
+    <%= ingredient.user_id %>
+  </p>
+
+  <p>
+    <strong>Global:</strong>
+    <%= ingredient.global %>
+  </p>
+
+</div>

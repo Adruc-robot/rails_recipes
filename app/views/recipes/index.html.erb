@@ -1,0 +1,33 @@
+<p style="color: green"><%= notice %></p>
+<h1>Recipes</h1>
+<%= link_to "New recipe", new_recipe_path %>
+<div id="recipes" class="content-scroller">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Recipe ID</th>
+        <% if current_user.admin %>
+          <th>User ID</th>
+          <th>Global</th>
+        <% end %>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recipes.each do |recipe| %>
+        <tr>
+          <td><%= recipe.name %></td>
+          <td><%= recipe.id %></td>
+          <% if current_user.admin %>
+            <td><%= User.find_by(id: recipe.user_id).email %></td>
+            <td><%= recipe.global %></td>
+          <% end %>
+            <td><%= link_to "View", recipe %></td>
+            <td><%= button_to "Delete", recipe, method: :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,56 @@
+<%= form_with(model: recipe_ingredient) do |form| %>
+  <% if recipe_ingredient.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(recipe_ingredient.errors.count, "error") %> prohibited this recipe_ingredient from being saved:</h2>
+
+      <ul>
+        <% recipe_ingredient.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :recipe_id, style: "display: block" %>
+    <%# @recipes = Recipe.where(id: params[current_user.id]).or(Recipe.where(global: "T"))%>
+    <%#= form.select :recipe_id, @recipes.map { |r| [r.name, r.id] }%>
+    <%= form.number_field :recipe_id, :value=>"29" %>
+  </div>
+
+  <div>
+    <%= form.label :ingredient_id, style: "display: block" %>
+    <% @ingredients = Ingredient.where(id: params[current_user.id]).or(Ingredient.where(global: "T")).order(name: :asc)%>
+    <%= form.select :ingredient_id, @ingredients.map { |i| [i.name, i.id] }%>
+  </div>
+
+  <div>
+    <%= form.label :amount, style: "display: block"%>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div>
+    <%= form.label :unit_id, style: "display: block" %>
+    <% @units = Unit.where(id: params[current_user.id]).or(Unit.where(global: "T")).order(name: :asc)%>
+    <%= form.select :unit_id, @units.map { |u| [u.name, u.id] }%>
+  </div>
+
+  <div>
+    <%= form.label :prep_instructions, style: "display: block" %>
+    <%= form.text_field :prep_instructions %>
+  </div>
+  <div>
+    <%= form.number_field :user_id, id: :recipe_ingredient_user_id, value: current_user.id, type: :hidden %>
+  </div>
+
+  <% if current_user.admin %>
+    <div>
+      <%= form.label :global %> <br />
+      <%= form.select :global, [["True","T"],["False","F"]] %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<p style="color: green"><%= notice %></p>
+<h1>Locations</h1>
+<%= link_to "New location", new_location_path %>
+<div id="locations" class="content-scroller">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <% if current_user.admin %>
+          <th>User ID</th>
+          <th>Global</th>
+        <% end %>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @locations.each do |location| %>
+        <tr>
+          <td><%= location.name %></td>
+          <% if current_user.admin %>
+            <td><%= location.user_id %></td>
+            <td><%= location.global %></td>
+          <% end %>
+            <td><%= link_to "View", location %></td>
+            <td><%= button_to "Delete", location, method: :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

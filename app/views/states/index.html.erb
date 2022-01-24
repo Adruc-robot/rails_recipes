@@ -1,0 +1,35 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>States</h1>
+<%= link_to "New state", new_state_path %>
+<div id="states" class="content-scroller">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <% if current_user.admin %>
+          <th>User email</th>
+          <th>Global</th>
+        <% end %>
+        <th></th>
+        <th></th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @states.each do |state| %>
+        <tr>
+          <td><%= state.name %></td>
+          <% if current_user.admin %>
+            <td><%= User.find_by(id: state.user_id).email %></td>
+            <td><%= state.global %></td>
+          <% end %>
+          <td><%= link_to "View", state %></td>
+          <td><%= button_to "Delete", state, method: :delete %></td>
+        </tr>
+      <% end %>
+          
+    </tbody>
+  </table>
+</div>
+
+
