@@ -1,7 +1,7 @@
 <div id="<%= dom_id state%>">
   <p>
     <strong>Name:</strong>
-    <%= recipe.name %>
+    <%= state.name %>
   </p>
   <% if current_user.admin %>
     <p>
@@ -10,7 +10,7 @@
     </p>
     <p>
       <strong>Global:</strong>
-      <%= recipe.global %>
+      <%= state.global %>
     </p>
   <% end %>
 </div>
