@@ -1,13 +1,13 @@
 <div class="recipesWrapper">
-    <%# @recipes = Recipe.where(id: params[current_user.id]).or(Recipe.where(global: "T"))%>
-    <%# params[:recipes].each do |p, id| %>
-    <% @recipes.each do |recipe| %>
-        <%# @recipe = Recipe.where(id: p) %>
-        <%# @recipe = Recipe.find_by_id(id) %>
-        <% @recipe_steps = RecipeStep.where(recipe_id: recipe.id)%>
-        <% @recipe_ingredients = RecipeIngredient.where(recipe_id: recipe.id)%>
-        <div id="recipe_<%= recipe.id %>" class="recipe" data-name="<%= recipe.name%>" 
-        data-steps="<% @recipe_steps.each do |recipe_step| %><p><%= recipe_step.step_number %>. <%= recipe_step.step_text %></p><% end %>" data-ingredients="<% @recipe_ingredients.each do |ri|%><p><%= ri.amount %> <%= Unit.find_by(id: ri.unit_id).name %> <%= Ingredient.find_by(id: ri.ingredient_id).name %> <% if ri.prep_instructions == "" %><% else %>(<%= ri.prep_instructions %>)<% end %></p><% end %>"><%= recipe.name%></div>
+    <% if @recipes.empty? %>
+        <p>NO RECIPES!!!1</p>
+    <% else %>
+        <% @recipes.each do |recipe| %>
+            <% @recipe_steps = RecipeStep.where(recipe_id: recipe.id)%>
+            <% @recipe_ingredients = RecipeIngredient.where(recipe_id: recipe.id)%>
+            <div id="recipe_<%= recipe.id %>" class="recipe" data-name="<%= recipe.name%>" 
+            data-steps="<% @recipe_steps.each do |recipe_step| %><p><%= recipe_step.step_number %>. <%= recipe_step.step_text %></p><% end %>" data-ingredients="<% @recipe_ingredients.each do |ri|%><p><%= ri.amount %> <%= Unit.find_by(id: ri.unit_id).name %> <%= Ingredient.find_by(id: ri.ingredient_id).name %> <% if ri.prep_instructions == "" %><% else %>(<%= ri.prep_instructions %>)<% end %></p><% end %>"><%= recipe.name%></div>
+        <% end %>
     <% end %>
 </div>
 
