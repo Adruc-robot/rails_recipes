@@ -12,5 +12,5 @@ pin "jquery", to: "https://cdn.skypack.dev/jquery", preload: true
 #pin "datatables", to: "https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"
 #pin "datatables", to: "https://cdn.skypack.dev/jquery"
 
-#pin_all_from "app/javascript/custom", under: "custom"
+pin_all_from "app/javascript/custom", under: "custom"
 #pin_all_from "app/javascript/src", under: "source"
