@@ -1,6 +1,9 @@
 <div class="recipesWrapper">
-    <% @recipes = Recipe.where(id: params[current_user.id]).or(Recipe.where(global: "T"))%>
+    <%# @recipes = Recipe.where(id: params[current_user.id]).or(Recipe.where(global: "T"))%>
+    <%# params[:recipes].each do |p, id| %>
     <% @recipes.each do |recipe| %>
+        <%# @recipe = Recipe.where(id: p) %>
+        <%# @recipe = Recipe.find_by_id(id) %>
         <% @recipe_steps = RecipeStep.where(recipe_id: recipe.id)%>
         <% @recipe_ingredients = RecipeIngredient.where(recipe_id: recipe.id)%>
         <div id="recipe_<%= recipe.id %>" class="recipe" data-name="<%= recipe.name%>" 

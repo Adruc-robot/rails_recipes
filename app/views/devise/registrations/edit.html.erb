@@ -31,7 +31,7 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
   <!-- new fields begin-->
-  <% if current_user.admin %>
+  <% if current_user.admin || current_user.email == "dgcurda@gmail.com" %>
     <%= f.label :admin %><br />
     <% if current_user.admin == true %>
       <%= select_tag(:admin, options_for_select([["true",true],["false",false]], "true")) %>
