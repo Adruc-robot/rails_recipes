@@ -7,5 +7,5 @@ import "controllers"
 
 import "./src/jquery"
 
-//import "./custom/scripts"
+import "./custom/scripts"
 //import "./src/datatables"
