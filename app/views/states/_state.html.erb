@@ -6,7 +6,7 @@
   <% if current_user.admin %>
     <p>
       <strong>User:</strong>
-      <%= User.find_by(id: recipe.user_id).email %>  
+      <%= User.find_by(id: state.user_id).email %>  
     </p>
     <p>
       <strong>Global:</strong>
