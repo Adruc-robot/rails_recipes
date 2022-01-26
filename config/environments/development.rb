@@ -71,7 +71,8 @@ Rails.application.configure do
   #devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-
+  #source maps on - not sure if this will help
+  config.assets.debug = true
 
 
 end
