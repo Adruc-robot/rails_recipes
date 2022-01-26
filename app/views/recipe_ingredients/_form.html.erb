@@ -20,7 +20,7 @@
 
   <div>
     <%= form.label :ingredient_id, style: "display: block" %>
-    <% @ingredients = Ingredient.where(id: params[current_user.id]).or(Ingredient.where(global: "T")).order(name: :asc)%>
+    <% @ingredients = Ingredient.where(user_id: current_user.id).or(Ingredient.where(global: "T")).order(name: :asc)%>
     <%= form.select :ingredient_id, @ingredients.map { |i| [i.name, i.id] }%>
   </div>
 
@@ -31,7 +31,7 @@
 
   <div>
     <%= form.label :unit_id, style: "display: block" %>
-    <% @units = Unit.where(id: params[current_user.id]).or(Unit.where(global: "T")).order(name: :asc)%>
+    <% @units = Unit.where(user_id: current_user.id).or(Unit.where(global: "T")).order(name: :asc)%>
     <%= form.select :unit_id, @units.map { |u| [u.name, u.id] }%>
   </div>
 

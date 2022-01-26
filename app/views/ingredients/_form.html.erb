@@ -18,7 +18,7 @@
   <div>
     <%= form.label :state, style: "display: block" %>
     <%#= form.text_field :state %>
-    <% @states = State.where(id: params[current_user.id]).or(State.where(global: "T")) %>
+    <% @states = State.where(user_id: current_user.id).or(State.where(global: "T")) %>
     <%= form.select :state_id, @states.map { |s| [s.name, s.id.to_i] } %>
     
   </div>
@@ -26,7 +26,7 @@
     <%= form.label :location, style: "display: block" %>
     <%#= form.text_field :location %>
     <%#= form.select :location, options_from_collection_for_select(locations, :id, :name)%>
-    <% @locations = Location.where(id: params[current_user.id]).or(Location.where(global: "T")) %>
+    <% @locations = Location.where(user_id: current_user.id).or(Location.where(global: "T")) %>
     <%= form.select :location_id, @locations.map { |l| [l.name, l.id] }%>
     
   </div>

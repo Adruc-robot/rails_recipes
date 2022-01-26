@@ -13,7 +13,7 @@
 
   <div>
     <%= form.label :recipe_id, style: "display: block" %>
-    <% @recipes = Recipe.where(id: params[current_user.id]).or(Recipe.where(global: "T"))%>
+    <% @recipes = Recipe.where(user_id: current_user.id).or(Recipe.where(global: "T"))%>
     <%#= form.select :recipe_id, @recipes.map { |r| [r.name,r.id] }%>
     <%= form.number_field :recipe_id, :value=>"29" %>
   </div>
