@@ -9,7 +9,7 @@ class RecipeStepsController < ApplicationController
     if current_user.admin
       @recipe_steps = RecipeStep.all.order(recipe_id: :asc, step_number: :asc)
     else
-      @recipes_steps = current_user.recipe_steps.or(RecipeStep.where(global: "T")).order(recipe_id: :asc, step_number: :asc)
+      @recipe_steps = current_user.recipe_steps.or(RecipeStep.where(global: "T")).order(recipe_id: :asc, step_number: :asc)
     end
   end
 
