@@ -35,10 +35,4 @@ $(document).ready(function() {
             };
         });
     });
-    //$(".pretty_data_table_boop").DataTable();
-    console.log("testing jquery");
 });
-
-document.addEventListener('readystatechange', function(ev) {
-    console.log(document.readyState);
-})

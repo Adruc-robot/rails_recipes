@@ -75,3 +75,22 @@
     height: 75vh;
     overflow-x: scroll;
 }
+.genFlex {
+    display: flex;
+    justify-content: space-evenly;
+}
+.flexBtn {
+    width: 100%
+}
+.lBtn {
+	background: none!important;
+    border: none;
+    padding: 0!important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color: red;
+    text-decoration: underline;
+    cursor: pointer;
+    display: inline-block;
+}

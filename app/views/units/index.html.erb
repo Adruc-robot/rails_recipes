@@ -1,8 +1,9 @@
+<%= javascript_include_tag "dt-setup" %>
 <p style="color: green"><%= notice %></p>
 <h1>Units</h1>
 <%= link_to "New unit", new_unit_path %>
 <div id="units" class="content-scroller">
-  <table class="table">
+  <table class="dt-table">
     <thead>
       <tr>
         <th>Unit Name</th>
@@ -11,19 +12,17 @@
           <th>Global</th>
         <% end %>
         <th></th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
       <% @units.each do |unit| %>
         <tr>
-          <td><%= unit.name %></td>
+          <td><%= link_to unit.name, unit %></td>
           <% if current_user.admin %>
             <td><%= User.find_by(id: unit.user_id).email + " (" + unit.user_id.to_s + ")" %></td>
             <td><%= unit.global %>
           <% end %>
-          <td><%= link_to "View", unit %></td>
-          <td><%= button_to "Delete", unit, method: :delete %></td>
+          <td><%= button_to "Delete", unit, method: :delete, class:"lBtn" %></td>
         </tr>
       <% end %>
     </tbody>

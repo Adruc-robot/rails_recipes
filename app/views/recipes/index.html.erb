@@ -1,31 +1,30 @@
+<%= javascript_include_tag "dt-setup" %>
 <p style="color: green"><%= notice %></p>
 <h1>Recipes</h1>
 <%= link_to "New recipe", new_recipe_path %>
 <div id="recipes" class="content-scroller">
-  <table class="table">
+  <table class="dt-table">
     <thead>
       <tr>
         <th>Name</th>
         <th>Recipe ID</th>
         <% if current_user.admin %>
-          <th>User ID</th>
+          <th>User Email (ID)</th>
           <th>Global</th>
         <% end %>
-        <th></th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <% @recipes.each do |recipe| %>
         <tr>
-          <td><%= recipe.name %></td>
+          <td><%= link_to recipe.name, recipe %></td>
           <td><%= recipe.id %></td>
           <% if current_user.admin %>
-            <td><%= User.find_by(id: recipe.user_id).email %></td>
+            <td><%= User.find_by(id: recipe.user_id).email + " (" + recipe.user_id.to_s + ")" %></td>
             <td><%= recipe.global %></td>
           <% end %>
-            <td><%= link_to "View", recipe %></td>
-            <td><%= button_to "Delete", recipe, method: :delete %></td>
+            <td><%= button_to "Delete", recipe, method: :delete,class:"lBtn" %></td>
         </tr>
       <% end %>
     </tbody>

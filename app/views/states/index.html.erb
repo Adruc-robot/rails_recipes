@@ -1,30 +1,28 @@
+<%= javascript_include_tag "dt-setup" %>
 <p style="color: green"><%= notice %></p>
-
 <h1>States</h1>
 <%= link_to "New state", new_state_path %>
 <div id="states" class="content-scroller">
-  <table class="table">
+  <table class="dt-table">
     <thead>
       <tr>
         <th>Name</th>
         <% if current_user.admin %>
-          <th>User email</th>
+          <th>User Email (ID)</th>
           <th>Global</th>
         <% end %>
-        <th></th>
         <th></th>
         </tr>
     </thead>
     <tbody>
       <% @states.each do |state| %>
         <tr>
-          <td><%= state.name %></td>
+          <td><%= link_to state.name, state %></td>
           <% if current_user.admin %>
-            <td><%= User.find_by(id: state.user_id).email %></td>
+            <td><%= User.find_by(id: state.user_id).email + " (" + state.user_id.to_s + ")" %></td>
             <td><%= state.global %></td>
           <% end %>
-          <td><%= link_to "View", state %></td>
-          <td><%= button_to "Delete", state, method: :delete %></td>
+          <td><%= button_to "Delete", state, method: :delete, class:"lBtn" %></td>
         </tr>
       <% end %>
           
