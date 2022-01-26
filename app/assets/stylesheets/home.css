@@ -94,3 +94,6 @@
     cursor: pointer;
     display: inline-block;
 }
+.textAreaChanger {
+    resize: both;
+}

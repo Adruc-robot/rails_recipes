@@ -25,7 +25,7 @@
 
   <div>
     <%= form.label :step_text, style: "display: block" %>
-    <%= form.text_field :step_text %>
+    <%= form.text_area :step_text, class:"textAreaChanger" %>
   </div>
   <div>
     <%= form.number_field :user_id, id: :recipe_step_user_id, value: current_user.id, type: :hidden %>
