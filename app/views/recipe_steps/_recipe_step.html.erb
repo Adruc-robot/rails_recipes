@@ -2,7 +2,7 @@
   <p>
     <strong>Recipe:</strong>
     <%#= Recipe.find_by(id: recipe_step.recipe_id).name %>
-    <%= recipe_step.recipe_id %>
+    <%= Recipe.find(recipe_step.recipe_id).name %>
   </p>
 
   <p>
@@ -17,7 +17,7 @@
   <% if current_user.admin %>
     <p>
       <strong>User:</strong>
-      <%= User.find_by(id: recipe_step.user_id).email %>  
+      <%= User.find(recipe_step.user_id).email %>  
     </p>
     <p>
       <strong>Global:</strong>

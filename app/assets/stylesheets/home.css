@@ -30,20 +30,25 @@
     transform: translate(-50%, -50%);
     background: white;
     box-shadow: 0 0 60px 10px rgb(0 0 0 /90%);
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
+    border-radius: 0.3rem;
 }
 #recNam {
     padding: 0px 2px 0px 10px;
+    font-size: 1.25rem;
 }
 #closer {
     color: #000;
     font-size: 28px;
     font-weight: bold;
-    z-index: 1;
     background-color: lightgray;
     padding: 0px 2px 0px 2px;
     height: 100%;
+    border-top-right-radius: 0.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    
 }
 .modal-guts {
     top: 0;
@@ -54,8 +59,12 @@
     z-index: -1;
 }
 #recIngs {
-    padding-left: 12px;
-    line-height: .6;
+    padding: 0.5rem 0 0 1rem;
+    line-height: .2rem;
+}
+#recIngs > :first-child,
+#recSteps > :first-child {
+    font-weight: bold;
 }
 #recSteps {
     line-height: 1;
@@ -63,13 +72,19 @@
 }
 .try {
     background: rgba(115, 200, 169, 1);
-    grid-row: 1/1;
-    border-top-left-radius: 25px;
-    display:grid;
-    grid-template-columns: 95% 5%
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+
+    
 }
 #oneLT {
     text-align: center;
+    height: 100%
+
 }
 .content-scroller {
     height: 75vh;
@@ -96,4 +111,11 @@
 }
 .textAreaChanger {
     resize: both;
+}
+#closer:hover,
+#closer:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: darkgray;
 }

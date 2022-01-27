@@ -6,12 +6,17 @@
 
   <p>
     <strong>Ingredient:</strong>
-    <%= recipe_ingredient.ingredient_id %>
+    <%= Ingredient.find(recipe_ingredient.ingredient_id).name %>
+  </p>
+
+  <p>
+    <strong>Amount:</strong>
+    <%= recipe_ingredient.amount %>
   </p>
 
   <p>
     <strong>Unit:</strong>
-    <%= recipe_ingredient.unit_id %>
+    <%= Unit.find(recipe_ingredient.unit_id).name %>
   </p>
 
   <p>
