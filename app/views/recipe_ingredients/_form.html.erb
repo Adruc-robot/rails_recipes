@@ -13,14 +13,11 @@
 
   <div>
     <%= form.label :recipe_id, style: "display: block" %>
-    <%# @recipes = Recipe.where(id: params[current_user.id]).or(Recipe.where(global: "T"))%>
-    <%#= form.select :recipe_id, @recipes.map { |r| [r.name, r.id] }%>
-    <%= form.number_field :recipe_id, :value=>"29" %>
+    <%= form.select :recipe_id, @recipes.map { |r| [r.name, r.id] }%>
   </div>
 
   <div>
     <%= form.label :ingredient_id, style: "display: block" %>
-    <% @ingredients = Ingredient.where(user_id: current_user.id).or(Ingredient.where(global: "T")).order(name: :asc)%>
     <%= form.select :ingredient_id, @ingredients.map { |i| [i.name, i.id] }%>
   </div>
 
@@ -31,7 +28,6 @@
 
   <div>
     <%= form.label :unit_id, style: "display: block" %>
-    <% @units = Unit.where(user_id: current_user.id).or(Unit.where(global: "T")).order(name: :asc)%>
     <%= form.select :unit_id, @units.map { |u| [u.name, u.id] }%>
   </div>
 

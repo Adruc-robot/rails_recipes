@@ -21,10 +21,12 @@ class RecipeStepsController < ApplicationController
   def new
     #@recipe_step = RecipeStep.new
     @recipe_step = current_user.recipe_steps.build
+    @recipes = current_user.recipes.select(:name,:id).order(name: :asc)
   end
 
   # GET /recipe_steps/1/edit
   def edit
+    @recipes = current_user.recipes.select(:name,:id).order(name: :asc)
   end
 
   # POST /recipe_steps or /recipe_steps.json

@@ -21,10 +21,16 @@ class RecipeIngredientsController < ApplicationController
   def new
     #@recipe_ingredient = RecipeIngredient.new
     @recipe_ingredient = current_user.recipe_ingredients.build
+    @recipes = current_user.recipes.select(:name, :id).order(name: :asc)
+    @ingredients = current_user.ingredients.or(Ingredient.where(global: "T")).select(:name, :id).order(name: :asc)
+    @units = current_user.units.or(Unit.where(global: "T")).select(:name, :id).order(name: :asc)
   end
 
   # GET /recipe_ingredients/1/edit
   def edit
+    @recipes = current_user.recipes.select(:name, :id).order(name: :asc)
+    @ingredients = current_user.ingredients.or(Ingredient.where(global: "T")).select(:name, :id).order(name: :asc)
+    @units = current_user.units.or(Unit.where(global: "T")).select(:name, :id).order(name: :asc)
   end
 
   # POST /recipe_ingredients or /recipe_ingredients.json

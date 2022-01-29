@@ -111,6 +111,8 @@
 }
 .textAreaChanger {
     resize: both;
+    width: 35em;
+    height: 10em;
 }
 #closer:hover,
 #closer:focus {
