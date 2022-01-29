@@ -1,0 +1,61 @@
+<div id="start_process">
+    <button onclick="testf">New</button><button onclick="testg">Existing</button>
+</div>
+<div id="newRecipe">
+<!--
+1. create recipe entry, save the id
+2. set-up recipe_ingredients using the recipe_id
+3. set-up recipe_steps using the recipe_id
+4. optional: add new ingredients
+-->
+</div>
+<div id="updateRecipe">
+<!--
+1. pick recipe to update
+2. show existing data
+    a. show recipe fields (recips/_show or model after as this is only one record - show has edit on it)
+    b. show recipe_ingredient fields (recipe_ingredients/index, but filtered to the recipe_id)
+    c. show recipe_steps fields (recipe_steps/index, but filtered to the recipe_id)
+3.  set-up recipe_ingredients using the recipe_id
+4. set-up recipe_steps using the recipe_id
+5. optional: add new ingredients
+-->
+<%# addressing the recipe%>
+<!--testing begin-->
+<%#= 
+  select_tag  
+      :first_select, # name of selectbox
+      options_from_collection_for_select(@myrecords, "id", "name"), # your options for this select box
+      :'data-remote' => 'true', # important for UJS
+      :'data-url' => url_for(:controller => 'MyController', :action => 'getdata'), # we get the data from here!
+      :'data-type' => 'json' # tell jQuery to parse the response as JSON!
+%>
+<%#= select_tag :first_select, options_from_collection_for_select(@recipePicker, "id", "name"), :'data-remote' => 'true', :'data-url' => url_for(:controller => 'CreateUpdateController', :action => 'getdata'), :'data-type' => 'json' %>
+
+
+<%#= 
+   select_tag  
+       :second_select, # name of selectbox
+       "<option>Please select something from first select!</option>"
+%>
+<%#= select_tag :second_select, "<option>Please select something from first select!</option>" %>
+<!--testing end-->
+
+<div id="recipeToUpdate">
+    
+    <%#= @recipePicker.id %>
+    <%= select_tag(:recipe_id, options_for_select(@recipePicker.collect { |rp| [rp.name,rp.id] } ) )%>
+    <%#= select "Recipe", @recipePicker.collect {|rp| [rp.name,rp.id] }%>
+    <%# @recipePicker.each do |rp| %>
+        <%#= "Name: " + rp.name + ", ID: " + rp.id.to_s %><br>
+    <%# end %>
+    <% @jointest.each do |j|%>
+        <%#= "Ingredient ID: " + j.ingredient_id.to_s + " Amount: " + j.amount + " Unit: " + j.unit_id.to_s%>
+        <%#= "Ingredient ID: " + j.doot.to_s %>
+        <%= j.recName + ": " + j.amount + " " + j.uniName + " " + j.ingName %>
+        <%#= @jointest%>
+        <br>
+    <% end %>
+</div>
+</div>
+

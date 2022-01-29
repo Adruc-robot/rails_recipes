@@ -7,9 +7,10 @@ class HomeController < ApplicationController
         @recipes = current_user.recipes.or(Recipe.where(global: "T")).order(name: :asc)
       end
     else
-        @recipes = Recipe.where(global: "T").order(name: :asc)
+        @recipes = Recipe.where(global: "T", status: "PB").order(name: :asc)
     end
   end
+  
   def about
   end
 end

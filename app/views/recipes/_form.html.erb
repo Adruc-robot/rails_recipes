@@ -19,10 +19,13 @@
   <div>
     <%= form.number_field :user_id, id: :recipe_user_id, value: current_user.id, type: :hidden %>
   </div>
-
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.select :status, [["In Progress","IP"],["Published","PB"]]%>
+  </div>
   <% if current_user.admin %>
     <div>
-      <%= form.label :global %> <br />
+      <%= form.label :global, style: "display: block" %>
       <%= form.select :global, [["True","T"],["False","F"]] %>
     </div>
   <% end %>

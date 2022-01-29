@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_22_233416) do
+ActiveRecord::Schema.define(version: 2022_01_27_164141) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 2022_01_22_233416) do
     t.integer "unit_id"
     t.string "prep_instructions"
     t.integer "user_id"
-    t.string "global", default: "F"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "amount"
@@ -51,7 +50,6 @@ ActiveRecord::Schema.define(version: 2022_01_22_233416) do
     t.integer "step_number"
     t.string "step_text"
     t.integer "user_id"
-    t.string "global", default: "F"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["recipe_id"], name: "index_recipe_steps_on_recipe_id"
@@ -64,6 +62,7 @@ ActiveRecord::Schema.define(version: 2022_01_22_233416) do
     t.string "global", default: "F"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status", default: "IP"
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 

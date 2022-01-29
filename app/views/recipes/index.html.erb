@@ -14,6 +14,7 @@
           <th>User Email (ID)</th>
           <th>Global</th>
         <% end %>
+        <th>Status</th>
         <th></th>
       </tr>
     </thead>
@@ -26,7 +27,14 @@
             <td><%= User.find_by(id: recipe.user_id).email + " (" + recipe.user_id.to_s + ")" %></td>
             <td><%= recipe.global %></td>
           <% end %>
-            <td><%= button_to "Delete", recipe, method: :delete,class:"lBtn" %></td>
+          <td>
+            <% if recipe.status == "IP" %>
+              In Progress
+            <% else %>
+              Published
+            <% end %>
+          </td>
+          <td><%= button_to "Delete", recipe, method: :delete,class:"lBtn" %></td>
         </tr>
       <% end %>
     </tbody>

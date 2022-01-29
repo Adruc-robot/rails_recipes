@@ -43,13 +43,6 @@
     <%= form.number_field :user_id, id: :recipe_ingredient_user_id, value: current_user.id, type: :hidden %>
   </div>
 
-  <% if current_user.admin %>
-    <div>
-      <%= form.label :global %> <br />
-      <%= form.select :global, [["True","T"],["False","F"]] %>
-    </div>
-  <% end %>
-
   <div>
     <%= form.submit %>
   </div>

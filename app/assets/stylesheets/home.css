@@ -119,3 +119,6 @@
     cursor: pointer;
     background-color: darkgray;
 }
+.IP {
+    background: rgb(200 115 115 / 90%);
+}

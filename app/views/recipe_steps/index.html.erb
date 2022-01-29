@@ -12,7 +12,6 @@
         <th>Step Instructions</th>
         <% if current_user.admin %>
           <th>User Email (ID)</th>
-          <th>Global</th>
         <% end %>
         <th></th>
       </tr>
@@ -24,7 +23,6 @@
           <td><%= link_to recipe_step.step_number.to_s + ". " + recipe_step.step_text, recipe_step %></td>
           <% if current_user.admin %>
             <td><%= User.find_by(id: recipe_step.user_id).email + " (" + recipe_step.user_id.to_s + ")" %></td>
-            <td><%= recipe_step.global %></td>
           <% end %>
             <td><%= button_to "Delete", recipe_step, method: :delete,class:"lBtn" %></td>
         </tr>

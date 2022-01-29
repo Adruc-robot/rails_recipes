@@ -24,6 +24,7 @@ gem "stimulus-rails"
 
 gem "jbuilder"
 
+#gem 'jquery-rails'
 
 
 

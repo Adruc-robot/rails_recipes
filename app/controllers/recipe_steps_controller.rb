@@ -80,6 +80,6 @@ class RecipeStepsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_step_params
-      params.require(:recipe_step).permit(:recipe_id, :step_number, :step_text, :user_id, :global)
+      params.require(:recipe_step).permit(:recipe_id, :step_number, :step_text, :user_id)
     end
 end

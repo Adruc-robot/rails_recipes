@@ -15,7 +15,6 @@
         <th>Preparation Instructions</th>
         <% if current_user.admin %>
           <th>User Email (ID)</th>
-          <th>Global</th>
         <% end %>
         <th></th>
       </tr>
@@ -30,7 +29,6 @@
           <td><%= recipe_ingredient.prep_instructions %></td>
           <% if current_user.admin %>
             <td><%= User.find_by(id: recipe_ingredient.user_id).email + " (" + recipe_ingredient.user_id.to_s + ")" %></td>
-            <td><%= recipe_ingredient.global %></td>
           <% end %>
             <td><%= button_to "Delete", recipe_ingredient, method: :delete,class:"lBtn" %></td>
         </tr>

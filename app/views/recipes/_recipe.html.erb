@@ -13,4 +13,12 @@
       <%= recipe.global %>
     </p>
   <% end %>
+  <p>
+    <strong>Status:</strong>
+    <% if recipe.status == "IP" %>
+      In Progress
+    <% else %>
+      Published
+    <% end %>
+  </p>
 </div>
