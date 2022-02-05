@@ -31,12 +31,14 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
   <!-- new fields begin-->
-  <% if current_user.admin || current_user.email == "dgcurda@gmail.com" %>
+  <% if current_user.admin == "T" || current_user.email == "dgcurda@gmail.com" %>
     <%= f.label :admin %><br />
-    <% if current_user.admin == true %>
-      <%= select_tag(:admin, options_for_select([["true",true],["false",false]], "true")) %>
+    <% if current_user.admin == "T" %>
+      <%#= select_tag(:admin, options_for_select([["True","T"],["False","F"]], "True")) %>
+      <%= f.select :admin, [ ["True","T"],["False","F"]], selected: "T" %>
     <% else %>
-      <%= select_tag(:admin, options_for_select([["true",true],["false",false]], "false"))%>
+      <%#= select_tag(:admin, options_for_select([["True","T"],["False","F"]], "False"))%>
+      <%= f.select :admin, [["True","T"],["False","F"]], selected: "F" %>
     <% end %>
   <% end %>
   <!-- new fields end-->

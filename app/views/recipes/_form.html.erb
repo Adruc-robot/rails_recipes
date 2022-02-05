@@ -23,7 +23,7 @@
     <%= form.label :status, style: "display: block" %>
     <%= form.select :status, [["In Progress","IP"],["Published","PB"]]%>
   </div>
-  <% if current_user.admin %>
+  <% if current_user.admin == "T" %>
     <div>
       <%= form.label :global, style: "display: block" %>
       <%= form.select :global, [["True","T"],["False","F"]] %>

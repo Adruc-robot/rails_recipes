@@ -3,10 +3,10 @@
     <strong>Name:</strong>
     <%= unit.name %>
   </p>
-  <% if current_user.admin %>
+  <% if current_user.admin == "T" %>
     <p>
       <strong>User:</strong>
-      <%= unit.user_id %>
+      <%= unit.user.email + "(" + unit.user_id.to_s + ")" %>
     </p>
 
     <p>

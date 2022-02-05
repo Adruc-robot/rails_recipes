@@ -1,0 +1,21 @@
+.recipe-utility-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    margin: .5rem;
+    background: rgb(248, 249, 250);
+    padding: .5rem;
+    border-radius: .4rem;
+}
+.recipe-ingredients-list, .recipe-steps-list {
+    list-style-type: none;
+    margin: .5rem;
+    padding: .5rem;
+    background: rgb(248, 249, 250);
+    border-radius: .4rem;
+}

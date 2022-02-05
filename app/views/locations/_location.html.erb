@@ -8,10 +8,11 @@
     <strong>User:</strong>
     <%= location.user_id %>
   </p>
-
-  <p>
-    <strong>Global:</strong>
-    <%= location.global %>
-  </p>
+  <% if current_user.admin == "T" %>
+    <p>
+      <strong>Global:</strong>
+      <%= location.global %>
+    </p>
+  <% end %>
 
 </div>

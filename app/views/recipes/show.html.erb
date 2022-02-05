@@ -11,28 +11,33 @@
 
 <p style="color: green"><%= notice %></p>
 <div class="bucket">
-  <div class="recipe">
+  <div class="build-recipe">
     <ul class="recipe-utility-list">
-      <h2><%= @recipe.name %></h2>
-      <li><%= link_to "Recipe edit", edit_recipe_path(@recipe) %></li>
-      <li><%= link_to "Delete recipe", @recipe, data: {turbo_method: :delete, turbo_confirm: "For real?" } %></li>
-      <li><%= link_to "Recipe Ingredients", recipe_recipe_ingredients_path(@recipe) %></li>
-      <li><%= link_to "Recipe Steps", recipe_recipe_steps_path(@recipe) %></li>
+      <li><h2><%= @recipe.name %></h2></li>
+      <li class="btn btn-secondary"><%= link_to "Recipe edit", edit_recipe_path(@recipe) %></li>
+      <li class="btn btn-secondary"><%= link_to "Delete recipe", @recipe, data: {turbo_method: :delete, turbo_confirm: "For real?" } %></li>
+      <li class="btn btn-secondary"><%= link_to "Recipe Ingredients", recipe_recipe_ingredients_path(@recipe) %></li>
+      <li class="btn btn-secondary"><%= link_to "Recipe Steps", recipe_recipe_steps_path(@recipe) %></li>
     </ul>
   </div>
   <div class="recipe_ingredients">
-    <ul>
-      <li class="recipe-ingredients-item"><%= link_to "add ingredient to recipe", new_recipe_recipe_ingredient_path(@recipe)%></li>
+    <ul class="recipe-ingredients-list">
+      <li class="btn btn-secondary"><%= link_to "add ingredient to recipe", new_recipe_recipe_ingredient_path(@recipe)%></li>
       <%# if @recipe.recipe_ingredients.order(@recipe.recip_ingredients.ingredients.name :asc).each do |recipe_ingredient| %>
       <% if @recipe.recipe_ingredients.includes(:ingredient).order("ingredients.name ASC").each do |recipe_ingredient| %>
-        <li class="recipe-ingredients-item"><%= recipe_ingredient.amount.to_s + " " + recipe_ingredient.unit.name + " " + recipe_ingredient.ingredient.name%><% if recipe_ingredient.prep_instructions %><%= "; " + recipe_ingredient.prep_instructions %><% end %></li>
+        <li>
+          <%= recipe_ingredient.amount.to_s + " " + recipe_ingredient.unit.name + " " + recipe_ingredient.ingredient.name%>
+          <% if recipe_ingredient.prep_instructions != "" %>
+            <%= " (" + recipe_ingredient.prep_instructions + ")"%>
+          <% end %>
+        </li>
       <% end.empty? %>
-        <li class="recipe-ingredients-item">No ingredients</li>
+        <li>No ingredients</li>
       <% end %>
   </div>
   <div class="recipe_steps">
     <ul class="recipe-steps-list">
-      <li><%= link_to "add step to recipe", new_recipe_recipe_step_path(@recipe) %></li>
+      <li class="btn btn-secondary"><%= link_to "add step to recipe", new_recipe_recipe_step_path(@recipe) %></li>
       <% if @recipe.recipe_steps.order(step_number: :asc).each do |recipe_step| %>
         <li><%= recipe_step.step_number.to_s + ". " + recipe_step.step_text %></li>
       <% end.empty? %>

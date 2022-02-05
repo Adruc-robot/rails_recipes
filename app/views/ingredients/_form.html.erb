@@ -33,9 +33,7 @@
   <div>
     <%= form.number_field :user_id, id: :ingredient_user_id, value: current_user.id, type: :hidden %>
   </div>
-  <%#= @locations.each { |l| l.id }%>
-  <%#= @locations.each { |l| l.id }%>
-  <% if current_user.admin %>
+  <% if current_user.admin == "T" %>
     <div>
       <%= form.label :global %> <br />
       <%= form.select :global, [["True","T"],["False","F"]] %>

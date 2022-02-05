@@ -124,3 +124,7 @@
 .IP {
     background: rgb(200 115 115 / 90%);
 }
+.recipe-utility-list a, .recipe-ingredients-list a, .recipe-steps-list a {
+    color: white;
+    text-decoration: none;
+}
