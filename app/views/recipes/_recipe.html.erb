@@ -1,24 +1,30 @@
-<div id="<%= dom_id recipe %>">
+<!--<div id="<%#= dom_id recipe %>">
   <p>
     <strong>Name:</strong>
-    <%= recipe.name %>
+    <%#= recipe.name %>
   </p>
-  <% if current_user.admin %>
+  <%# if current_user.admin %>
     <p>
       <strong>User:</strong>
-      <%= User.find_by(id: recipe.user_id).email %>  
+      <%#= User.find_by(id: recipe.user_id).email %>  
     </p>
     <p>
       <strong>Global:</strong>
-      <%= recipe.global %>
+      <%#= recipe.global %>
     </p>
-  <% end %>
+  <%# end %>
   <p>
     <strong>Status:</strong>
-    <% if recipe.status == "IP" %>
+    <%# if recipe.status == "IP" %>
       In Progress
-    <% else %>
+    <%# else %>
       Published
-    <% end %>
+    <%# end %>
+  </p>
+</div>-->
+
+<div id="<%= dom_id recipe %>" class="<%= recipe.status %>">
+  <p>
+    <%= link_to recipe.name, recipe %>
   </p>
 </div>

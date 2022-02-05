@@ -1,4 +1,5 @@
-<%= form_with(model: recipe_step) do |form| %>
+<%#= form_with(model: recipe_step) do |form| %>
+<%= form_with(model: [@recipe, recipe_step]) do |form| %>
   <% if recipe_step.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(recipe_step.errors.count, "error") %> prohibited this recipe_step from being saved:</h2>
@@ -11,10 +12,10 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :recipe_id, style: "display: block" %>
-    <%= form.select :recipe_id, @recipes.map { |r| [r.name,r.id] }%>
-  </div>
+  <!--<div>
+    <%#= form.label :recipe_id, style: "display: block" %>
+    <%#= form.select :recipe_id, @recipes.map { |r| [r.name,r.id] }%>
+  </div>-->
 
   <div>
     <%= form.label :step_number, style: "display: block" %>
