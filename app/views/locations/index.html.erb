@@ -9,7 +9,7 @@
     <thead>
       <tr>
         <th>Name</th>
-        <% if current_user.admin %>
+        <% if current_user.admin == "T" %>
           <th>User Email (ID)</th>
           <th>Global</th>
         <% end %>
@@ -20,11 +20,13 @@
       <% @locations.each do |location| %>
         <tr>
           <td><%= link_to location.name, location %></td>
-          <% if current_user.admin %>
-            <td><%= User.find_by(id: location.user_id).email + " (" + location.user_id.to_s + ")" %></td>
+          <% if current_user.admin == "T" %>
+            <td>
+              <%= location.user.email + " (" + location.user_id.to_s + ")" %>  
+            </td>
             <td><%= location.global %></td>
           <% end %>
-            <td><%= button_to "Delete", location, method: :delete,class:"lBtn" %></td>
+            <td><%= link_to "Delete", location, data: {turbo_method: :delete, turbo_confirm: "For real?" } %></td>
         </tr>
       <% end %>
     </tbody>

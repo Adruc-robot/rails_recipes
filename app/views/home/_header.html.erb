@@ -9,20 +9,14 @@
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class:"nav-link" %>
+            <%#= button_to "Sign Out", destroy_user_session_path, method: :delete, class:"nav-link" %>
+            <%= link_to "Sign Out", destroy_user_session_path, data: {turbo_method: :delete }, class:"nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to current_user.email + " (Edit Profile)", edit_user_registration_path, class:"nav-link"%>
           </li>
-          <!--<li>
-            <%#= link_to "Create/Update Recipe", create_update_index_path, class:"nav-link"%>
-          </li>-->
           <li class="nav-item">
             <%= link_to "Locations", locations_path, class: "nav-link" %>
-          </li>
-
-          <li class="nav-item">
-            <%= link_to "Ingredients", ingredients_path, class: "nav-link" %>
           </li>
 
           <li class="nav-item">
@@ -34,13 +28,10 @@
             <%= link_to "Units", units_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Recipes", recipes_path, class: "nav-link" %>
+            <%= link_to "Ingredients", ingredients_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Recipe Steps", recipe_steps_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Recipe Ingredients", recipe_ingredients_path, class: "nav-link" %>
+            <%= link_to "Recipe Maintenance", recipes_path, class: "nav-link" %>
           </li>
         <% else %>
             <li class="nav-item">

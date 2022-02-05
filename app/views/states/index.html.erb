@@ -20,11 +20,14 @@
       <% @states.each do |state| %>
         <tr>
           <td><%= link_to state.name, state %></td>
-          <% if current_user.admin %>
-            <td><%= User.find_by(id: state.user_id).email + " (" + state.user_id.to_s + ")" %></td>
+          <% if current_user.admin == "T" %>
+            <td>
+              <%#= User.find_by(id: state.user_id).email + " (" + state.user_id.to_s + ")" %>
+              <%= state.user.email + " (" + state.user_id.to_s + ")" %>
+            </td>
             <td><%= state.global %></td>
           <% end %>
-          <td><%= button_to "Delete", state, method: :delete, class:"lBtn" %></td>
+          <td><%= link_to "Delete", state, data: {turbo_method: :delete, turbo_confirm: "For real?" } %></td>
         </tr>
       <% end %>
           

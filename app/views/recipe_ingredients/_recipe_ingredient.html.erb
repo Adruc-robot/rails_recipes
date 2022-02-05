@@ -1,12 +1,9 @@
 <div id="<%= dom_id recipe_ingredient %>">
-  <p>
-    <strong>Recipe:</strong>
-    <%= recipe_ingredient.recipe_id %>
-  </p>
-
+  
   <p>
     <strong>Ingredient:</strong>
-    <%= Ingredient.find(recipe_ingredient.ingredient_id).name %>
+    <%#= Ingredient.find(recipe_ingredient.ingredient_id).name %>
+    <%= recipe_ingredient.ingredients.name%>
   </p>
 
   <p>
@@ -16,17 +13,12 @@
 
   <p>
     <strong>Unit:</strong>
-    <%= Unit.find(recipe_ingredient.unit_id).name %>
+    <%#= Unit.find(recipe_ingredient.unit_id).name %>
+    <%= recipe_ingredient.units.name%>
   </p>
 
   <p>
     <strong>Prep instructions:</strong>
     <%= recipe_ingredient.prep_instructions %>
   </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= recipe_ingredient.user_id %>
-  </p>
-
 </div>

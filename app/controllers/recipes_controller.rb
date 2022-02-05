@@ -6,10 +6,11 @@ class RecipesController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
   # GET /recipes or /recipes.json
   def index
-    if current_user.admin
-      @recipes = Recipe.all
+    if current_user.admin == "T"
+      @recipes = Recipe.all.order(name: :asc)
     else
-      @recipes = current_user.recipes.or(Recipe.where(global: "T"))
+      #@recipes = current_user.recipes.or(Recipe.where(global: "T"))
+      @recipes = current_user.recipes.order(name: :asc);
     end
   end
 
@@ -62,7 +63,8 @@ class RecipesController < ApplicationController
     @recipe.destroy
 
     respond_to do |format|
-      format.html { redirect_to recipes_url, notice: "Recipe was successfully destroyed." }
+      #format.html { redirect_to recipes_url, notice: "Recipe was successfully destroyed." }
+      format.html { redirect_to "root_path", notice: "Recipe was successfully destroyed." }
       format.json { head :no_content }
     end
   end

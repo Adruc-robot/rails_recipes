@@ -9,7 +9,7 @@
     <thead>
       <tr>
         <th>Name</th>
-        <% if current_user.admin %>
+        <% if current_user.admin == "T" %>
           <th>User Email (ID)</th>
           <th>Global</th>
           <th>Store Location (ID)</th>
@@ -22,13 +22,22 @@
       <% @ingredients.each do |ingredient| %>
         <tr>
           <td><%= link_to ingredient.name, ingredient %></td>
-          <% if current_user.admin %>
-            <td><%= User.find_by(id: ingredient.user_id).email + " (" + ingredient.user_id.to_s + ")" %></td>
+          <% if current_user.admin == "T" %>
+            <td>
+              <%= ingredient.user.email + " (" + ingredient.user_id.to_s + ")" %>
+            </td>
             <td><%= ingredient.global %></td>
-            <td><%= Location.find_by(id: ingredient.location_id).name + " (" + ingredient.location_id.to_s + ")" %>
-            <td><%= State.find_by(id: ingredient.state_id).name + " (" + ingredient.state_id.to_s + ")" %>
+            <td>
+              <%= ingredient.location.name + " (" + ingredient.location_id.to_s + ")" %>
+            </td>
+            <td>
+              <%= ingredient.state.name + " (" + ingredient.state_id.to_s + ")" %>
+            <td>
           <% end %>
-            <td><%= button_to "Delete", ingredient, method: :delete,class:"lBtn" %></td>
+
+            <td>
+              <%= link_to "Delete", ingredient, data: {turbo_method: :delete, turbo_confirm: "For real?" } %>
+            </td>
         </tr>
       <% end %>
     </tbody>

@@ -7,8 +7,9 @@ class UnitsController < ApplicationController
   # GET /units or /units.json
   def index
     #@units = Unit.all
-    @units = Unit.where(user_id: params[current_user.id]).or(Unit.where(global: "T"))
+    #@units = Unit.where(user_id: params[current_user.id]).or(Unit.where(global: "T"))
     #@units = current_user.units.find_by(id: params[:id]).or(Unit.where(global: "T"))
+    @units = current_user.units.or(Unit.where(global: "T"))
   end
 
   # GET /units/1 or /units/1.json

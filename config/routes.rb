@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root "home#index"
-  resources :recipe_steps
-  resources :recipe_ingredients
-  resources :recipes
+  
+  resources :recipes do 
+    resources :recipe_steps
+    resources :recipe_ingredients
+  end
   resources :locations
   get 'users/index'
   resources :ingredients

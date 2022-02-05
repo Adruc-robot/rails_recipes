@@ -21,10 +21,13 @@
         <tr>
           <td><%= link_to unit.name, unit %></td>
           <% if current_user.admin %>
-            <td><%= User.find_by(id: unit.user_id).email + " (" + unit.user_id.to_s + ")" %></td>
+            <td>
+              <%#= User.find_by(id: unit.user_id).email + " (" + unit.user_id.to_s + ")" %>
+              <%= unit.user.email + " (" + unit.user_id.to_s + ")" %>
+            </td>
             <td><%= unit.global %>
           <% end %>
-          <td><%= button_to "Delete", unit, method: :delete, class:"lBtn" %></td>
+          <td><%= link_to "Delete", unit, data: {turbo_method: :delete, turbo_confirm: "For real?" } %></td>
         </tr>
       <% end %>
     </tbody>
