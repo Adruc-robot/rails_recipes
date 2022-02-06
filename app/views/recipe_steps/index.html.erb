@@ -37,8 +37,8 @@
 <div id="recipe_steps">
   <% @recipe_steps.order(step_number: :asc).each do |recipe_step| %>
     <div><%= recipe_step.step_number.to_s + ". " + recipe_step.step_text %></div>
-    <div><%= link_to "Edit", edit_recipe_recipe_step_path(@recipe, recipe_step) %></div>
-    <div><%= link_to "Delete", [@recipe, recipe_step], data: {turbo_method: :delete, turbo_confirm: "Delete step?"} %></div>
+    <div><%= link_to "Edit", edit_recipe_recipe_step_path(@recipe, recipe_step),class:"btn btn-secondary" %></div>
+    <div><%= link_to "Delete", [@recipe, recipe_step], data: {turbo_method: :delete, turbo_confirm: "Delete step?"},class:"btn btn-secondary" %></div>
   <% end %>
   <%= link_to "Back to Recipe", recipe_path(@recipe) %>
 </div>

@@ -43,7 +43,7 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Recipes</h1>
-<%= link_to "New Recipe", new_recipe_path %>
+<p><%= link_to "New Recipe", new_recipe_path %></p>
 <div id="recipes">
   <% @recipes.each do |recipe| %>
     <%= render recipe %>

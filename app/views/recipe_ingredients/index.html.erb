@@ -43,7 +43,7 @@
   <ul class="recipe-ingredients-list">
     <% @recipe_ingredients.each do |recipe_ingredient| %>
       <li><%= recipe_ingredient.amount + " " + recipe_ingredient.unit.name + " " + recipe_ingredient.ingredient.name %><% if recipe_ingredient.prep_instructions %><% "; " + recipe_ingredient.prep_instructions %><% end %>
-        <div><%= link_to "(Edit", edit_recipe_recipe_ingredient_path(@recipe, recipe_ingredient)%>|<%= link_to "Delete)", [@recipe, recipe_ingredient], data: {turbo_method: :delete, turbo_confirm: "Delete ingredient from recipe?"} %></div>
+        <div><%= link_to "(Edit", edit_recipe_recipe_ingredient_path(@recipe, recipe_ingredient),class:"btn btn-secondary"%>|<%= link_to "Delete)", [@recipe, recipe_ingredient], data: {turbo_method: :delete, turbo_confirm: "Delete ingredient from recipe?"},class:"btn btn-secondary" %></div>
       </li>
     <% end %>
   </ul>    
