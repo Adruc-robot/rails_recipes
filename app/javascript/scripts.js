@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/*$(document).ready(function() {
     var modal = document.getElementById('myModal');
     $(".recipe").click(function() {
         var modTit = document.getElementById("recNam");
@@ -24,15 +24,15 @@ $(document).ready(function() {
             modal.style.display = "none";
         }
     };
-    $("#filterRecipes").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        //console.log("poop");
-        $(".recipe").filter(function() {
-            if (($(this).data('ingredients').toLowerCase().indexOf(value) == -1) && ($(this).text().toLowerCase().indexOf(value) == -1) ) {
-                $(this).hide();
-            } else {
-                $(this).show();
-            };
-        });
-    });
-});
+});*/
+function filterRecipes(elem) {
+    let value = elem.value.toLowerCase();
+    let recipes = document.getElementsByClassName("recipe");
+    for (let i=0; i<recipes.length; i++){
+        if ((recipes[i].dataset.ingredients.toLowerCase().indexOf(value) == -1) && (recipes[i].innerText.toLowerCase().indexOf(value) == -1)) {
+            recipes[i].classList.add("noShow");
+        } else {
+            recipes[i].classList.remove("noShow");
+        }
+    }
+}
