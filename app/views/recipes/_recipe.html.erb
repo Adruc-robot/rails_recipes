@@ -1,5 +1,3 @@
-<div id="<%= dom_id recipe %>" class="<%= recipe.status %>">
-  <p>
+<li id="<%= dom_id recipe %>" class="<% if recipe.status == "IP" %> <%= recipe.status %>  <% else %> themeColor <% end %> list-group-item list-group-item-action list-group-item-secondary">
     <%= link_to recipe.name, recipe %>
-  </p>
-</div>
+</li>

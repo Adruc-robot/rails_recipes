@@ -5,8 +5,8 @@
 <p>
   <%= link_to "New Recipe", new_recipe_path, data:{turbo_frame: "zFormModal", controller: "z-form-modal", action: "z-form-modal#showModal"} %>
 </p>
-<div id="recipes">
+<ul id="recipes" class="list-group">
   <% @recipes.each do |recipe| %>
     <%= render recipe %>
   <% end %>
-</div>
+</ul>

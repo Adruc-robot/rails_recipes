@@ -1,3 +1,12 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+.themeColor {
+    background: $teal-400;
+}
+
+.ipThemeColor {
+    background: $red-400;
+}
 /*home.css*/
 .recipesWrapper {
     display: flex;
@@ -16,7 +25,7 @@
     text-transform: lowercase;
     font-weight: 600;
     box-shadow: 0 1px 5px 1px rgb(0 0 0 / 10%);
-    background: rgba(115,200,169, 0.9);
+    background: $teal-400;
 }
 .tModal {
     display: grid;
@@ -71,8 +80,11 @@
     line-height: 1;
     padding-left: 10px;
 }
+#recipes a {
+    color: rgb(255, 249, 249);
+}
 .try {
-    background: rgba(115, 200, 169, 1);
+    background: $teal-400;
     border-top-left-radius: 0.3rem;
     border-top-right-radius: 0.3rem;
     display: flex;
@@ -121,7 +133,7 @@
     background-color: darkgray;
 }
 .IP {
-    background: rgb(200 115 115 / 90%);
+    background: $red-400;
 }
 .recipe-utility-list a, .recipe-ingredients-list a, .recipe-steps-list a {
     color: white;
@@ -185,5 +197,3 @@
 .bi-pencil, .bi-trash3 {
     color: black;
 }
-@import 'bootstrap/scss/bootstrap';
-@import 'bootstrap-icons/font/bootstrap-icons';

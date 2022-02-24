@@ -24,7 +24,7 @@ gem "stimulus-rails"
 
 gem "jbuilder"
 
-#gem 'jquery-rails'
+gem "sassc-rails"
 gem "cssbundling-rails"
 
 

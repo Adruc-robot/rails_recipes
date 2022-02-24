@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :user_lists
   root "home#index"
   
   resources :recipes do 
