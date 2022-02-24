@@ -1,10 +1,9 @@
-<h1>Editing ingredient</h1>
-
-<%= render "form", ingredient: @ingredient %>
-
-<br>
-
-<div>
-  <%= link_to "Show this ingredient", @ingredient %> |
-  <%= link_to "Back to ingredients", ingredients_path %>
-</div>
+<%= turbo_frame_tag :zFormModal do %>
+  <div data-controller="z-form-modal" data-action="turbo:submit-end->z-form-modal#submitEnd">
+    <div class="modal-header">
+      <h5 class="modal-title" id="staticBackdropLabel">Editing <%= @ingredient.name %></h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <%= render "form", ingredient: @ingredient %>
+  </div>
+<% end %>

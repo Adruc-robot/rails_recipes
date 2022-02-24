@@ -10,37 +10,34 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-  <div>
-    <%= form.label :state, style: "display: block" %>
-    <%#= form.text_field :state %>
-    <% @states = State.where(user_id: current_user.id).or(State.where(global: "T")) %>
-    <%= form.select :state_id, @states.map { |s| [s.name, s.id.to_i] } %>
-    
-  </div>
-  <div>
-    <%= form.label :location, style: "display: block" %>
-    <%#= form.text_field :location %>
-    <%#= form.select :location, options_from_collection_for_select(locations, :id, :name)%>
-    <% @locations = Location.where(user_id: current_user.id).or(Location.where(global: "T")) %>
-    <%= form.select :location_id, @locations.map { |l| [l.name, l.id] }%>
-    
-  </div>
-  <div>
-    <%= form.number_field :user_id, id: :ingredient_user_id, value: current_user.id, type: :hidden %>
-  </div>
-  <% if current_user.admin == "T" %>
+  <div class="modal-body">
     <div>
-      <%= form.label :global %> <br />
-      <%= form.select :global, [["True","T"],["False","F"]] %>
+      <%= form.label :name, style: "display: block" %>
+      <%= form.text_field :name %>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.submit %>
+    <div>
+      <%= form.label :state, style: "display: block" %>
+      <% @states = State.where(user_id: current_user.id).or(State.where(global: "T")) %>
+      <%= form.select :state_id, @states.map { |s| [s.name, s.id.to_i] } %>
+      
+    </div>
+    <div>
+      <%= form.label :location, style: "display: block" %>
+      <% @locations = Location.where(user_id: current_user.id).or(Location.where(global: "T")) %>
+      <%= form.select :location_id, @locations.map { |l| [l.name, l.id] }%>
+      
+    </div>
+    <div>
+      <%= form.number_field :user_id, id: :ingredient_user_id, value: current_user.id, type: :hidden %>
+    </div>
+    <% if current_user.admin == "T" %>
+      <div>
+        <%= form.label :global %> <br />
+        <%= form.select :global, [["True","T"],["False","F"]] %>
+      </div>
+    <% end %>
+  </div>
+  <div class="modal-footer">
+    <%= form.submit class: "btn btn-secondary" %>
   </div>
 <% end %>

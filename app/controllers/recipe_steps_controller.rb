@@ -41,6 +41,9 @@ class RecipeStepsController < ApplicationController
 
     respond_to do |format|
       if @recipe_step.save
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.append("recipe-steps-container", partial: "recipe_steps/recipe_step", locals: {recipe: @recipe, recipe_step: @recipe_step})
+        end
         #format.html { redirect_to recipe_step_url(@recipe_step), notice: "Recipe step was successfully created." }
         format.html { redirect_to recipe_path(@recipe), notice: "Recipe step was successfully created." }
         format.json { render :show, status: :created, location: @recipe_step }
@@ -55,6 +58,9 @@ class RecipeStepsController < ApplicationController
   def update
     respond_to do |format|
       if @recipe_step.update(recipe_step_params)
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace(@recipe_step, partial: "recipe_steps/recipe_step", locals: {recipe: @recipe, recipe_step: @recipe_step})
+        end
         #format.html { redirect_to recipe_step_url(@recipe_step), notice: "Recipe step was successfully updated." }
         format.html { redirect_to recipe_path(@recipe), notice: "Recipe step was successfully updated." }
         format.json { render :show, status: :ok, location: @recipe_step }
@@ -71,7 +77,8 @@ class RecipeStepsController < ApplicationController
 
     respond_to do |format|
       #format.html { redirect_to recipe_steps_url, notice: "Recipe step was successfully destroyed." }
-      format.html { redirect_to recipe_recipe_steps_path(@recipe), notice: "Recipe step was successfully destroyed." }
+      #format.html { redirect_to recipe_recipe_steps_path(@recipe), notice: "Recipe step was successfully destroyed." }
+      format.html { redirect_to recipe_path(@recipe), notice: "Recipe step was successfully destroyed." }
       format.json { head :no_content }
     end
   end

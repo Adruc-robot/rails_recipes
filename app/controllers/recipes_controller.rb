@@ -16,6 +16,8 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1 or /recipes/1.json
   def show
+    @recipe_ingredients = @recipe.recipe_ingredients.includes(:ingredient).order("ingredients.name ASC")
+    @recipe_steps = @recipe.recipe_steps.order("recipe_steps.step_number")
   end
 
   # GET /recipes/new
@@ -36,6 +38,10 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.save
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.prepend("recipes", partial: "recipes/recipe", locals: {recipe: @recipe})
+        end
+
         format.html { redirect_to recipe_url(@recipe), notice: "Recipe was successfully created." }
         format.json { render :show, status: :created, location: @recipe }
       else
@@ -49,6 +55,9 @@ class RecipesController < ApplicationController
   def update
     respond_to do |format|
       if @recipe.update(recipe_params)
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace("recipeTitle", partial: "recipes/recipeTitle", locals: {recipe: @recipe})
+        end
         format.html { redirect_to recipe_url(@recipe), notice: "Recipe was successfully updated." }
         format.json { render :show, status: :ok, location: @recipe }
       else
@@ -64,7 +73,7 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       #format.html { redirect_to recipes_url, notice: "Recipe was successfully destroyed." }
-      format.html { redirect_to "root_path", notice: "Recipe was successfully destroyed." }
+      format.html { redirect_to recipes_path, status: :see_other, notice: "Recipe was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -78,7 +87,7 @@ class RecipesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe
-      @recipe = Recipe.find(params[:id])
+      @recipe = Recipe.find_by_id(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

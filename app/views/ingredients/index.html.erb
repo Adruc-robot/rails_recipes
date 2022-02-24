@@ -1,45 +1,65 @@
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.css"/>
+<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.css"/>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.js"></script>
-<%= javascript_include_tag "dt-setup" %>
-<p style="color: green"><%= notice %></p>
+<%#= javascript_include_tag "dt-setup" %>
+<p style="color: green"><%#= notice %></p>
 <h1>Ingredients</h1>
-<%= link_to "New ingredient", new_ingredient_path %>
+<%#= link_to "New ingredient", new_ingredient_path %>
 <div id="ingredients" class="content-scroller">
   <table class="dt-table">
     <thead>
       <tr>
         <th>Name</th>
-        <% if current_user.admin == "T" %>
+        <%# if current_user.admin == "T" %>
           <th>User Email (ID)</th>
           <th>Global</th>
           <th>Store Location (ID)</th>
           <th>Ingredient State (ID)</th>
-        <% end %>
+        <%# end %>
         <th></th>
       </tr>
     </thead>
     <tbody>
-      <% @ingredients.each do |ingredient| %>
+      <%# @ingredients.each do |ingredient| %>
         <tr>
-          <td><%= link_to ingredient.name, ingredient %></td>
-          <% if current_user.admin == "T" %>
+          <td><%#= link_to ingredient.name, ingredient %></td>
+          <%# if current_user.admin == "T" %>
             <td>
-              <%= ingredient.user.email + " (" + ingredient.user_id.to_s + ")" %>
+              <%#= ingredient.user.email + " (" + ingredient.user_id.to_s + ")" %>
             </td>
-            <td><%= ingredient.global %></td>
+            <td><%#= ingredient.global %></td>
             <td>
-              <%= ingredient.location.name + " (" + ingredient.location_id.to_s + ")" %>
+              <%#= ingredient.location.name + " (" + ingredient.location_id.to_s + ")" %>
             </td>
             <td>
-              <%= ingredient.state.name + " (" + ingredient.state_id.to_s + ")" %>
+              <%#= ingredient.state.name + " (" + ingredient.state_id.to_s + ")" %>
             <td>
-          <% end %>
+          <%# end %>
 
             <td>
-              <%= link_to "Delete", ingredient, data: {turbo_method: :delete, turbo_confirm: "For real?" } %>
+              <%#= link_to "Delete", ingredient, data: {turbo_method: :delete, turbo_confirm: "For real?" } %>
             </td>
         </tr>
-      <% end %>
+      <%# end %>
     </tbody>
   </table>
-</div>
+</div>-->
+<%= turbo_frame_tag :zFormModal do %>
+  <div data-controller="z-form-modal" data-action="turbo:submit-end->z-form-modal#submitEnd">
+    <div class="modal-header">
+      <h5 class="modal-title" id="staticBackdropLabel">Ingredient List</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <ul class="ingredient-list">
+        <li>
+          <%= link_to "add ingredient to ingredient list", new_ingredient_path, data:{turbo_frame: "zFormModal", controller: "z-form-modal", action: "z-form-modal#showModal"}, class: "btn btn-secondary"%>
+        </li>
+        <% if @ingredients.order(name: :asc).each do |ingredient| %>
+          <%= render ingredient %>
+        <% end.empty? %>
+          <li class="noItems">No ingredients</li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

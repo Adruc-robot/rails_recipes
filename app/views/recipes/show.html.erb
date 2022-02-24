@@ -1,47 +1,36 @@
-<!--<p style="color: green"><%#= notice %></p>
-
-<%#= render @recipe %>
-
-<div>
-  <%#= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
-  <%#= link_to "Back to recipes", recipes_path %>
-
-  <%#= button_to "Destroy this recipe", @recipe, method: :delete %>
-</div>-->
-
 <p style="color: green"><%= notice %></p>
 <div class="bucket">
   <div class="build-recipe">
     <ul class="recipe-utility-list">
-      <li><h2><%= @recipe.name %></h2></li>
-      <li class="btn btn-secondary"><%= link_to "Recipe edit", edit_recipe_path(@recipe) %></li>
-      <li class="btn btn-secondary"><%= link_to "Delete recipe", @recipe, data: {turbo_method: :delete, turbo_confirm: "For real?" } %></li>
-      <li class="btn btn-secondary"><%= link_to "Recipe Ingredients", recipe_recipe_ingredients_path(@recipe) %></li>
-      <li class="btn btn-secondary"><%= link_to "Recipe Steps", recipe_recipe_steps_path(@recipe) %></li>
+      <li><h2 id="recipeTitle"><%= @recipe.name %></h2></li>
+      <li><div>
+      <%= link_to edit_recipe_path(@recipe), data:{turbo_frame: "zFormModal", controller: "z-form-modal", action: "z-form-modal#showModal"} do %>
+        <i class="bi bi-pencil"></i>
+      <% end %>
+      <%= link_to @recipe, data: {turbo_method: :delete, turbo_confirm: "For real?" } do %>
+        <i class="bi bi-trash3"></i>
+      <% end %>
+      </div></li>      
     </ul>
   </div>
   <div class="recipe_ingredients">
-    <ul class="recipe-ingredients-list">
-      <li class="btn btn-secondary"><%= link_to "add ingredient to recipe", new_recipe_recipe_ingredient_path(@recipe)%></li>
-      <%# if @recipe.recipe_ingredients.order(@recipe.recip_ingredients.ingredients.name :asc).each do |recipe_ingredient| %>
-      <% if @recipe.recipe_ingredients.includes(:ingredient).order("ingredients.name ASC").each do |recipe_ingredient| %>
-        <li>
-          <%= recipe_ingredient.amount.to_s + " " + recipe_ingredient.unit.name + " " + recipe_ingredient.ingredient.name%>
-          <% if recipe_ingredient.prep_instructions != "" %>
-            <%= " (" + recipe_ingredient.prep_instructions + ")"%>
-          <% end %>
-        </li>
+    <ul class="recipe-ingredients-list" id="recipe-ingredients-container">
+      <li>
+        <%= link_to "add ingredient to recipe", new_recipe_recipe_ingredient_path(@recipe), data:{turbo_frame: "zFormModal", controller: "z-form-modal", action: "z-form-modal#showModal"}, class: "btn btn-secondary"%>
+      </li>
+      <% if @recipe_ingredients.each do |recipe_ingredient| %>
+        <%= render recipe_ingredient %>
       <% end.empty? %>
-        <li>No ingredients</li>
+        <li class="noItems">No ingredients</li>
       <% end %>
   </div>
   <div class="recipe_steps">
-    <ul class="recipe-steps-list">
-      <li class="btn btn-secondary"><%= link_to "add step to recipe", new_recipe_recipe_step_path(@recipe) %></li>
-      <% if @recipe.recipe_steps.order(step_number: :asc).each do |recipe_step| %>
-        <li><%= recipe_step.step_number.to_s + ". " + recipe_step.step_text %></li>
+    <ul class="recipe-steps-list" id="recipe-steps-container">
+      <li><%= link_to "add step to recipe", new_recipe_recipe_step_path(@recipe), data:{turbo_frame: "zFormModal", controller: "z-form-modal", action: "z-form-modal#showModal"},class: "btn btn-secondary" %></li>
+      <% if @recipe_steps.each do |recipe_step| %>
+        <%= render recipe_step %>
       <% end.empty? %>
-        <li>No steps</li>
+        <li class="noItems">No steps</li>
       <% end %>
     </ul>
   </div>

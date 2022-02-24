@@ -22,10 +22,14 @@ class IngredientsController < ApplicationController
   def new
     #@ingredient = Ingredient.new
     @ingredient = current_user.ingredients.build
+    @states = State.where(user_id: current_user.id).or(State.where(global: "T"))
+    @locations = Location.where(user_id: current_user.id).or(Location.where(global: "T"))
   end
 
   # GET /ingredients/1/edit
   def edit
+    @states = State.where(user_id: current_user.id).or(State.where(global: "T"))
+    @locations = Location.where(user_id: current_user.id).or(Location.where(global: "T"))
   end
 
   # POST /ingredients or /ingredients.json
@@ -35,6 +39,11 @@ class IngredientsController < ApplicationController
     
     respond_to do |format|
       if @ingredient.save
+        format.turbo_stream 
+        #I'm unsure where to redirect at this point, so I'll test with just this the format.turbo_stream above.
+        #do
+          #render turbo_stream: turbo_stream.append("recipe-ingredients-container", partial: #"recipe_ingredients/recipe_ingredient", locals: {recipe: @recipe, recipe_ingredient: #@recipe_ingredient})
+        #end
         format.html { redirect_to ingredient_url(@ingredient), notice: "Ingredient was successfully created." }
         format.json { render :show, status: :created, location: @ingredient }
       else
@@ -48,6 +57,8 @@ class IngredientsController < ApplicationController
   def update
     respond_to do |format|
       if @ingredient.update(ingredient_params)
+        #again, unsure if I want to redirect, so just format.turbo_stream
+        format.turbo_stream
         format.html { redirect_to ingredient_url(@ingredient), notice: "Ingredient was successfully updated." }
         format.json { render :show, status: :ok, location: @ingredient }
       else
