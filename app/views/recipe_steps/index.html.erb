@@ -1,35 +1,4 @@
-<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.css"/>
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.js"></script>
-<%#= javascript_include_tag "dt-setup" %>
-<p style="color: green"><%#= notice %></p>
-<h1>Recipe steps</h1>
-<%#= link_to "New recipe step", new_recipe_step_path %>
-<div id="recipe_steps" class="content-scroller">
-  <table class="dt-table">
-    <thead>
-      <tr>
-        <th>Recipe Name (ID)</th>
-        <th>Step Instructions</th>
-        <%# if current_user.admin %>
-          <th>User Email (ID)</th>
-        <%# end %>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%# @recipe_steps.each do |recipe_step| %>
-        <tr>
-          <td><%#= Recipe.find_by(id: recipe_step.recipe_id).name + " (" + recipe_step.recipe_id.to_s + ")" %></td>
-          <td><%#= link_to recipe_step.step_number.to_s + ". " + recipe_step.step_text, recipe_step %></td>
-          <%# if current_user.admin %>
-            <td><%#= User.find_by(id: recipe_step.user_id).email + " (" + recipe_step.user_id.to_s + ")" %></td>
-          <%# end %>
-            <td><%#= button_to "Delete", recipe_step, method: :delete,class:"lBtn" %></td>
-        </tr>
-      <%# end %>
-    </tbody>
-  </table>
-</div>-->
+
 <p style="color: green"><%= notice %></p>
 
 <h1><%= @recipe.name %> recipe steps</h1>

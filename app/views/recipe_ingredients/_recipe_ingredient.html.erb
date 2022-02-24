@@ -1,24 +1,14 @@
-<div id="<%= dom_id recipe_ingredient %>">
-  
-  <p>
-    <strong>Ingredient:</strong>
-    <%#= Ingredient.find(recipe_ingredient.ingredient_id).name %>
-    <%= recipe_ingredient.ingredients.name%>
-  </p>
-
-  <p>
-    <strong>Amount:</strong>
-    <%= recipe_ingredient.amount %>
-  </p>
-
-  <p>
-    <strong>Unit:</strong>
-    <%#= Unit.find(recipe_ingredient.unit_id).name %>
-    <%= recipe_ingredient.units.name%>
-  </p>
-
-  <p>
-    <strong>Prep instructions:</strong>
-    <%= recipe_ingredient.prep_instructions %>
-  </p>
-</div>
+<li id="<%= dom_id recipe_ingredient %>">
+  <%= recipe_ingredient.amount.to_s + " " + recipe_ingredient.unit.name + " " + recipe_ingredient.ingredient.name%>
+  <% if recipe_ingredient.prep_instructions != "" %>
+    <%= " (" + recipe_ingredient.prep_instructions + ")"%>
+  <% end %>
+  <div>
+    <%= link_to edit_recipe_recipe_ingredient_path(@recipe, recipe_ingredient), data:{turbo_frame: "zFormModal", controller: "z-form-modal", action: "z-form-modal#showModal"} do %>
+    <i class="bi bi-pencil"></i>
+    <% end %>
+    <%= link_to [@recipe, recipe_ingredient], data: {turbo_method: :delete, turbo_confirm: "Delete ingredient from recipe?"} do %>
+    <i class="bi bi-trash3"></i>
+    <% end %>
+    </div>
+</li>

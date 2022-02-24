@@ -1,4 +1,3 @@
-<%#= form_with(model: recipe_step) do |form| %>
 <%= form_with(model: [@recipe, recipe_step]) do |form| %>
   <% if recipe_step.errors.any? %>
     <div style="color: red">
@@ -11,26 +10,21 @@
       </ul>
     </div>
   <% end %>
+  <div class="modal-body">
+    <div>
+      <%= form.label :step_number, style: "display: block" %>
+      <%= form.number_field :step_number %>
+    </div>
 
-  <!--<div>
-    <%#= form.label :recipe_id, style: "display: block" %>
-    <%#= form.select :recipe_id, @recipes.map { |r| [r.name,r.id] }%>
-  </div>-->
-
-  <div>
-    <%= form.label :step_number, style: "display: block" %>
-    <%= form.number_field :step_number %>
+    <div>
+      <%= form.label :step_text, style: "display: block" %>
+      <%= form.text_area :step_text, class:"textAreaChanger" %>
+    </div>
+    <div>
+      <%= form.number_field :user_id, id: :recipe_step_user_id, value: current_user.id, type: :hidden %>
+    </div>
   </div>
-
-  <div>
-    <%= form.label :step_text, style: "display: block" %>
-    <%= form.text_area :step_text, class:"textAreaChanger" %>
-  </div>
-  <div>
-    <%= form.number_field :user_id, id: :recipe_step_user_id, value: current_user.id, type: :hidden %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="modal-footer">
+    <%= form.submit class: "btn btn-secondary" %>
   </div>
 <% end %>

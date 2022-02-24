@@ -1,9 +1,9 @@
-<h1>New recipe step for <%= @recipe_step.recipe.name  %></h1>
-
-<%= render "form", recipe_step: @recipe_step %>
-
-<br>
-
-<div>
-  <%= link_to "Back to recipe steps", recipe_recipe_steps_path(@recipe) %>
-</div>
+<%= turbo_frame_tag :zFormModal do %>
+  <div data-controller="z-form-modal" data-action="turbo:submit-end->z-form-modal#submitEnd">
+    <div class="modal-header">
+      <h5 class="modal-title" id="staticBackdropLabel">New recipe step for <%= @recipe_step.recipe.name %></h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <%= render "form", recipe_step: @recipe_step %>
+  </div>
+<% end %>

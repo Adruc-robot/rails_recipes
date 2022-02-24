@@ -48,6 +48,9 @@ class RecipeIngredientsController < ApplicationController
 
     respond_to do |format|
       if @recipe_ingredient.save
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.append("recipe-ingredients-container", partial: "recipe_ingredients/recipe_ingredient", locals: {recipe: @recipe, recipe_ingredient: @recipe_ingredient})
+        end
         #format.html { redirect_to recipe_ingredient_url(@recipe_ingredient), notice: "Recipe ingredient was successfully created." }
         #since this is being triggered off of the recipe, redirect back
         format.html { redirect_to recipe_path(@recipe), notice: "Recipe ingredient was successfully created." }
@@ -63,6 +66,9 @@ class RecipeIngredientsController < ApplicationController
   def update
     respond_to do |format|
       if @recipe_ingredient.update(recipe_ingredient_params)
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace(@recipe_ingredient, partial: "recipe_ingredients/recipe_ingredient", locals: {recipe: @recipe, recipe_ingredient: @recipe_ingredient})
+        end
         #format.html { redirect_to recipe_ingredient_url(@recipe_ingredient), notice: "Recipe ingredient was successfully updated." }
         #same as above - redirect to recipe
         format.html { redirect_to recipe_path(@recipe), notice: "Recipe ingredient was successfully updated." }

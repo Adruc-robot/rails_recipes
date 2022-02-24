@@ -1,49 +1,10 @@
-<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.css"/>
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.js"></script>
-<%#= javascript_include_tag "dt-setup" %>
-<p style="color: green"><%#= notice %></p>
-<h1>Recipes</h1>
-<%#= link_to "New recipe", new_recipe_path %>
-<div id="recipes" class="content-scroller">
-  <table class="dt-table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Recipe ID</th>
-        <%# if current_user.admin %>
-          <th>User Email (ID)</th>
-          <th>Global</th>
-        <%# end %>
-        <th>Status</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%# @recipes.each do |recipe| %>
-        <tr>
-          <td><%#= link_to recipe.name, recipe %></td>
-          <td><%#= recipe.id %></td>
-          <%# if current_user.admin %>
-            <td><%#= User.find_by(id: recipe.user_id).email + " (" + recipe.user_id.to_s + ")" %></td>
-            <td><%#= recipe.global %></td>
-          <%# end %>
-          <td>
-            <%# if recipe.status == "IP" %>
-              In Progress
-            <%# else %>
-              Published
-            <%# end %>
-          </td>
-          <td><%#= button_to "Delete", recipe, method: :delete,class:"lBtn" %></td>
-        </tr>
-      <%# end %>
-    </tbody>
-  </table>
-</div>-->
+
 <p style="color: green"><%= notice %></p>
 
 <h1>Recipes</h1>
-<p><%= link_to "New Recipe", new_recipe_path %></p>
+<p>
+  <%= link_to "New Recipe", new_recipe_path, data:{turbo_frame: "zFormModal", controller: "z-form-modal", action: "z-form-modal#showModal"} %>
+</p>
 <div id="recipes">
   <% @recipes.each do |recipe| %>
     <%= render recipe %>

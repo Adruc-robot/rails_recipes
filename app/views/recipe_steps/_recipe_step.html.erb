@@ -1,24 +1,11 @@
-<div id="<%= dom_id recipe_step %>">
-  <p>
-    <strong>Recipe:</strong>
-    <%#= Recipe.find_by(id: recipe_step.recipe_id).name %>
-    <%#= Recipe.find(recipe_step.recipe_id).name %>
-    <%= recipe_step.recipes.name %>
-  </p>
-
-  <p>
-    <strong>Step number:</strong>
-    <%= recipe_step.step_number %>
-  </p>
-
-  <p>
-    <strong>Step text:</strong>
-    <%= recipe_step.step_text %>
-  </p>
-  <!--<%# if current_user.admin %>
-    <p>
-      <strong>User:</strong>
-      <%#= User.find(recipe_step.user_id).email %>  
-    </p>
-  <%# end %>-->
-</div>
+<li id="<%= dom_id recipe_step %>">
+  <%= recipe_step.step_number.to_s + ". " + recipe_step.step_text %>
+  <div>
+    <%= link_to edit_recipe_recipe_step_path(@recipe, recipe_step), data:{turbo_frame: "zFormModal", controller: "z-form-modal", action: "z-form-modal#showModal"} do %>
+      <i class="bi bi-pencil"></i>
+    <% end %>
+    <%= link_to [@recipe, recipe_step], data: {turbo_method: :delete, turbo_confirm: "Delete step from recipe?"} do %>
+      <i class="bi bi-trash3"></i>
+    <% end %>
+    </div>
+</li>
