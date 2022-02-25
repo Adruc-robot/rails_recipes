@@ -10,16 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_05_184730) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_02_25_231122) do
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.integer "state_id"
     t.integer "location_id"
     t.integer "user_id"
     t.string "global", default: "F"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["location_id"], name: "index_ingredients_on_location_id"
     t.index ["state_id"], name: "index_ingredients_on_state_id"
     t.index ["user_id"], name: "index_ingredients_on_user_id"
@@ -29,9 +28,22 @@ ActiveRecord::Schema.define(version: 2022_02_05_184730) do
     t.string "name"
     t.integer "user_id"
     t.string "global", default: "F"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_locations_on_user_id"
+  end
+
+  create_table "meal_preps", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.date "meal_date"
+    t.string "meal_type"
+    t.integer "recipe_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "start_time", precision: nil
+    t.datetime "end_time", precision: nil
+    t.index ["recipe_id"], name: "index_meal_preps_on_recipe_id"
+    t.index ["user_id"], name: "index_meal_preps_on_user_id"
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
@@ -40,8 +52,8 @@ ActiveRecord::Schema.define(version: 2022_02_05_184730) do
     t.integer "unit_id"
     t.string "prep_instructions"
     t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "amount"
   end
 
@@ -50,8 +62,8 @@ ActiveRecord::Schema.define(version: 2022_02_05_184730) do
     t.integer "step_number"
     t.string "step_text"
     t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["recipe_id"], name: "index_recipe_steps_on_recipe_id"
     t.index ["user_id"], name: "index_recipe_steps_on_user_id"
   end
@@ -60,8 +72,8 @@ ActiveRecord::Schema.define(version: 2022_02_05_184730) do
     t.string "name"
     t.integer "user_id"
     t.string "global", default: "F"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "status", default: "IP"
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
@@ -70,8 +82,8 @@ ActiveRecord::Schema.define(version: 2022_02_05_184730) do
     t.string "name"
     t.integer "user_id"
     t.string "global", default: "F"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_states_on_user_id"
   end
 
@@ -79,8 +91,8 @@ ActiveRecord::Schema.define(version: 2022_02_05_184730) do
     t.string "name"
     t.integer "user_id"
     t.string "global", default: "F"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_units_on_user_id"
   end
 
@@ -88,13 +100,15 @@ ActiveRecord::Schema.define(version: 2022_02_05_184730) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: 6
-    t.datetime "remember_created_at", precision: 6
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "admin", default: "F"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "meal_preps", "recipes"
+  add_foreign_key "meal_preps", "users"
 end

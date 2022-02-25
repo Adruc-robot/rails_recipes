@@ -10,7 +10,8 @@ class RecipesController < ApplicationController
       @recipes = Recipe.all.order(name: :asc)
     else
       #@recipes = current_user.recipes.or(Recipe.where(global: "T"))
-      @recipes = current_user.recipes.order(name: :asc);
+      #@recipes = current_user.recipes.order(name: :asc)
+      @recipes = Recipe.where("user_id=? or global=?", current_user.id, "T")
     end
   end
 

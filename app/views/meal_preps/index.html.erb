@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Meal preps</h1>
+<%= week_calendar(events: @meal_preps) do |date, meal_preps| %>
+  <%= date.day %>
+    <% meal_preps.each do |meal_prep| %>
+      <div>
+        <%= meal_prep.recipe.name %>
+      </div>
+    <% end %>
+<% end %>
+<%= render @meal_preps %>

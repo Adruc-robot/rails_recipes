@@ -11,4 +11,5 @@ class User < ApplicationRecord
   has_many :recipes
   has_many :recipe_ingredients
   has_many :recipe_steps
+  has_many :meal_preps
 end

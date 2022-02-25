@@ -25,8 +25,10 @@ class RecipeIngredientsController < ApplicationController
     #@recipe_ingredient = RecipeIngredient.new
     #@recipe_ingredient = current_user.recipe_ingredients.build
     #@recipes = current_user.recipes.select(:name, :id).order(name: :asc)
-    @ingredients = current_user.ingredients.or(Ingredient.where(global: "T")).select(:name, :id).order(name: :asc)
-    @units = current_user.units.or(Unit.where(global: "T")).select(:name, :id).order(name: :asc)
+    #@ingredients = current_user.ingredients.or(Ingredient.where(global: "T")).select(:name, :id).order(name: :asc)
+    @ingredients = Ingredient.where("user_id=? or global=?",current_user.id, "T")
+    #@units = current_user.units.or(Unit.where(global: "T")).select(:name, :id).order(name: :asc)
+    @units = Unit.where("user_id=? or global=?",current_user.id, "T")
     #leaving ingredients and units as is since they are global. Altering them to trigger off of @recipe would mean no global units or ingredients could be used... I think.
     @recipe_ingredient = @recipe.recipe_ingredients.build
   end

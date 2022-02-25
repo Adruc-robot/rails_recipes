@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  users: one
+  meal_date: 2022-02-24
+  meal_type: MyString
+  recipes: one
+
+two:
+  users: two
+  meal_date: 2022-02-24
+  meal_type: MyString
+  recipes: two
