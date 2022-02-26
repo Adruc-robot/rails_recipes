@@ -6,12 +6,7 @@ class IngredientsController < ApplicationController
 
   # GET /ingredients or /ingredients.json
   def index
-    #@ingredients = Ingredient.all
-    if current_user.admin
-      @ingredients = Ingredient.all.order(name: :asc)
-    else
-      @ingredients = current_user.ingredients.or(Ingredient.where(global: "T")).order(name: :asc)
-    end
+    @ingredients = Ingredient.where("user_id=? or global=?",current_user.id,"T").order(name: :asc)
   end
 
   # GET /ingredients/1 or /ingredients/1.json
@@ -20,21 +15,19 @@ class IngredientsController < ApplicationController
 
   # GET /ingredients/new
   def new
-    #@ingredient = Ingredient.new
+    @states = State.where("user_id=? or global=?",current_user.id,"T").order(name: :asc)
+    @locations = Location.where("user_id=? or global=?",current_user.id,"T").order(name: :asc)
     @ingredient = current_user.ingredients.build
-    @states = State.where(user_id: current_user.id).or(State.where(global: "T"))
-    @locations = Location.where(user_id: current_user.id).or(Location.where(global: "T"))
   end
 
   # GET /ingredients/1/edit
   def edit
-    @states = State.where(user_id: current_user.id).or(State.where(global: "T"))
-    @locations = Location.where(user_id: current_user.id).or(Location.where(global: "T"))
+    @states = State.where("user_id=? or global=?",current_user.id,"T").order(name: :asc)
+    @locations = Location.where("user_id=? or global=?",current_user.id,"T").order(name: :asc)
   end
 
   # POST /ingredients or /ingredients.json
   def create
-    #@ingredient = Ingredient.new(ingredient_params)
     @ingredient = current_user.ingredients.build(ingredient_params)
     
     respond_to do |format|
@@ -73,9 +66,7 @@ class IngredientsController < ApplicationController
     @ingredient.destroy
 
     respond_to do |format|
-      #format.html { redirect_to ingredients_url, notice: "Ingredient was successfully destroyed." }
       format.html { redirect_to ingredients_path, notice: "Ingredient was successfully destroyed." }
-      #format.html { redirect_to ingredients_url, notice: "Ingredient was successfully destroyed." }
       format.json { head :no_content }
     end
   end

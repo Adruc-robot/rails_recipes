@@ -10,7 +10,7 @@
     <div class="recipesWrapper">        
     <% @recipes.each do |recipe| %>
         <div data-controller="recipe" data-controller="recipe" data-action="click->recipe#show" id="recipe_<%= recipe.id %>" class="recipe <% if recipe.status == "IP"%>IP<% end %>" data-name="<%= recipe.name%>" 
-        data-steps="<% recipe.recipe_steps.each do |recipe_step| %><p><%= recipe_step.step_number %>. <%= recipe_step.step_text %></p><% end %>" data-ingredients="<% recipe.recipe_ingredients.each do |ri|%><p><%= ri.amount %> <%= ri.unit.name %> <%= ri.ingredient.name %> <% if ri.prep_instructions == "" %><% else %>(<%= ri.prep_instructions %>)<% end %></p><% end %>"><%= recipe.name%></div>
+        data-steps="<% recipe.recipe_steps.each do |recipe_step| %><p><%= recipe_step.step_number %>. <%= recipe_step.step_text %></p><% end %>" data-ingredients="<% recipe.recipe_ingredients.each do |ri|%><p><%= ri.amount %> <%= ri.unit.name %> <%= ri.ingredient.name %> <% if ri.prep_instructions == "" %><% else %>(<%= ri.prep_instructions %>)<% end %></p><% end %>"><%= recipe.name%><% if recipe.global == "T"%><i class="bi bi-globe"></i><%end%></div>
     <% end %>
     </div>
 <% end %>

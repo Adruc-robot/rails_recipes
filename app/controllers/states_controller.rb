@@ -9,7 +9,8 @@ class StatesController < ApplicationController
     if current_user.admin
       @states = State.all
     else
-      @states = current_user.states.or(State.where(global: "T"))
+      #@states = current_user.states.or(State.where(global: "T"))
+      @states = State.where("user_id=? or global=?",current_user.id,"T")
     end
   end
 

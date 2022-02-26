@@ -7,13 +7,8 @@ class RecipeIngredientsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
   # GET /recipe_ingredients or /recipe_ingredients.json
   def index
-    #if current_user.admin
-      #@recipe_ingredients = RecipeIngredient.all.order(recipe_id: :asc, ingredient_id: :asc)
-    #else
-      #@recipe_ingredients = current_user.recipe_ingredients.or(RecipeIngredient.where(global: "T")).order(recipe_id: :asc, ingredient_id: :asc)
-    #end
-    #Change for building recipes. Admins may/may not need to see ALL recipe_ingredients. This change will disallow that - only recipes owned by the user will be seen since @recipe is prefiltered. I will stop tying because I'm clearly overthinking this.
-    @recipe_ingredients = @recipe.recipe_ingredients
+    #I believe this view is no longerused, but here goes.
+    @recipe_ingredients = @recipe.recipe_ingredients.includes(:ingredient).order("recipe.name ASC, ingredients.name ASC")
   end
 
   # GET /recipe_ingredients/1 or /recipe_ingredients/1.json
@@ -22,28 +17,19 @@ class RecipeIngredientsController < ApplicationController
 
   # GET /recipe_ingredients/new
   def new
-    #@recipe_ingredient = RecipeIngredient.new
-    #@recipe_ingredient = current_user.recipe_ingredients.build
-    #@recipes = current_user.recipes.select(:name, :id).order(name: :asc)
-    @ingredients = current_user.ingredients.or(Ingredient.where(global: "T")).select(:name, :id).order(name: :asc)
-    @units = current_user.units.or(Unit.where(global: "T")).select(:name, :id).order(name: :asc)
-    #leaving ingredients and units as is since they are global. Altering them to trigger off of @recipe would mean no global units or ingredients could be used... I think.
+    @ingredients = Ingredient.where("user_id=? or global=?",current_user.id,"T").order(name: :asc)
+    @units = Unit.where("user_id=? or global=?",current_user.id,"T").order(name: :asc)
     @recipe_ingredient = @recipe.recipe_ingredients.build
   end
 
   # GET /recipe_ingredients/1/edit
   def edit
-    #@recipes = current_user.recipes.select(:name, :id).order(name: :asc)
-    #I think the same goes for these two so we can get globals in there
-    @ingredients = current_user.ingredients.or(Ingredient.where(global: "T")).select(:name, :id).order(name: :asc)
-    @units = current_user.units.or(Unit.where(global: "T")).select(:name, :id).order(name: :asc)
+    @ingredients = Ingredient.where("user_id=? or global=?",current_user.id,"T").order(name: :asc)
+    @units = Unit.where("user_id=? or global=?",current_user.id,"T").order(name: :asc)
   end
 
   # POST /recipe_ingredients or /recipe_ingredients.json
   def create
-    #@recipe_ingredient = RecipeIngredient.new(recipe_ingredient_params)
-    #@recipe_ingredient = current_user.recipe_ingredients.build(recipe_ingredient_params)
-    #again, dumping the current_user req on recipe_ingredients
     @recipe_ingredient = @recipe.recipe_ingredients.build(recipe_ingredient_params)
 
     respond_to do |format|
@@ -51,7 +37,6 @@ class RecipeIngredientsController < ApplicationController
         format.turbo_stream do
           render turbo_stream: turbo_stream.append("recipe-ingredients-container", partial: "recipe_ingredients/recipe_ingredient", locals: {recipe: @recipe, recipe_ingredient: @recipe_ingredient})
         end
-        #format.html { redirect_to recipe_ingredient_url(@recipe_ingredient), notice: "Recipe ingredient was successfully created." }
         #since this is being triggered off of the recipe, redirect back
         format.html { redirect_to recipe_path(@recipe), notice: "Recipe ingredient was successfully created." }
         format.json { render :show, status: :created, location: @recipe_ingredient }
@@ -69,7 +54,6 @@ class RecipeIngredientsController < ApplicationController
         format.turbo_stream do
           render turbo_stream: turbo_stream.replace(@recipe_ingredient, partial: "recipe_ingredients/recipe_ingredient", locals: {recipe: @recipe, recipe_ingredient: @recipe_ingredient})
         end
-        #format.html { redirect_to recipe_ingredient_url(@recipe_ingredient), notice: "Recipe ingredient was successfully updated." }
         #same as above - redirect to recipe
         format.html { redirect_to recipe_path(@recipe), notice: "Recipe ingredient was successfully updated." }
         format.json { render :show, status: :ok, location: @recipe_ingredient }
@@ -85,7 +69,6 @@ class RecipeIngredientsController < ApplicationController
     @recipe_ingredient.destroy
 
     respond_to do |format|
-      #format.html { redirect_to recipe_ingredients_url, notice: "Recipe ingredient was successfully destroyed." }
       #same on the redirect
       format.html { redirect_to recipe_recipe_ingredients_path(@recipe), notice: "Recipe ingredient was successfully destroyed." }
       format.json { head :no_content }

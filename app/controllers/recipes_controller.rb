@@ -7,10 +7,10 @@ class RecipesController < ApplicationController
   # GET /recipes or /recipes.json
   def index
     if current_user.admin == "T"
+      #at some point, admin won't want to see all the recipes (hopefully)
       @recipes = Recipe.all.order(name: :asc)
     else
-      #@recipes = current_user.recipes.or(Recipe.where(global: "T"))
-      @recipes = current_user.recipes.order(name: :asc);
+      @recipes = Recipe.where("user_id=? or global=?",current_user.id,"T").order(name: :asc)
     end
   end
 
@@ -22,8 +22,6 @@ class RecipesController < ApplicationController
 
   # GET /recipes/new
   def new
-    #@recipe = Recipe.new
-    #@state = current_user.states.build
     @recipe = current_user.recipes.build
   end
 
@@ -33,7 +31,6 @@ class RecipesController < ApplicationController
 
   # POST /recipes or /recipes.json
   def create
-    #@recipe = Recipe.new(recipe_params)
     @recipe = current_user.recipes.build(recipe_params)
 
     respond_to do |format|

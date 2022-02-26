@@ -7,13 +7,8 @@ class RecipeStepsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
   # GET /recipe_steps or /recipe_steps.json
   def index
-    #if current_user.admin
-      #@recipe_steps = RecipeStep.all.order(recipe_id: :asc, step_number: :asc)
-    #else
-      #@recipe_steps = current_user.recipe_steps.or(RecipeStep.where(global: "T")).order(recipe_id: :asc, step_number: :asc)
-    #end
     #See note under index for recipe_ingredients - this change fundamentally changes how admins interact with recipe steps. It might not be a big deal
-    @recipe_steps = @recipe.recipe_steps
+    @recipe_steps = @recipe.recipe_steps.order(step_number: :asc)
   end
 
   # GET /recipe_steps/1 or /recipe_steps/1.json
@@ -22,21 +17,15 @@ class RecipeStepsController < ApplicationController
 
   # GET /recipe_steps/new
   def new
-    #@recipe_step = RecipeStep.new
-    #@recipe_step = current_user.recipe_steps.build
-    #@recipes = current_user.recipes.select(:name,:id).order(name: :asc)
     @recipe_step = @recipe.recipe_steps.build
   end
 
   # GET /recipe_steps/1/edit
   def edit
-    #@recipes = current_user.recipes.select(:name,:id).order(name: :asc)
   end
 
   # POST /recipe_steps or /recipe_steps.json
   def create
-    #@recipe_step = RecipeStep.new(recipe_step_params)
-    #@recipe_step = current_user.recipe_steps.build
     @recipe_step = @recipe.recipe_steps.build(recipe_step_params)
 
     respond_to do |format|
@@ -44,7 +33,6 @@ class RecipeStepsController < ApplicationController
         format.turbo_stream do
           render turbo_stream: turbo_stream.append("recipe-steps-container", partial: "recipe_steps/recipe_step", locals: {recipe: @recipe, recipe_step: @recipe_step})
         end
-        #format.html { redirect_to recipe_step_url(@recipe_step), notice: "Recipe step was successfully created." }
         format.html { redirect_to recipe_path(@recipe), notice: "Recipe step was successfully created." }
         format.json { render :show, status: :created, location: @recipe_step }
       else
@@ -61,7 +49,6 @@ class RecipeStepsController < ApplicationController
         format.turbo_stream do
           render turbo_stream: turbo_stream.replace(@recipe_step, partial: "recipe_steps/recipe_step", locals: {recipe: @recipe, recipe_step: @recipe_step})
         end
-        #format.html { redirect_to recipe_step_url(@recipe_step), notice: "Recipe step was successfully updated." }
         format.html { redirect_to recipe_path(@recipe), notice: "Recipe step was successfully updated." }
         format.json { render :show, status: :ok, location: @recipe_step }
       else
@@ -76,8 +63,6 @@ class RecipeStepsController < ApplicationController
     @recipe_step.destroy
 
     respond_to do |format|
-      #format.html { redirect_to recipe_steps_url, notice: "Recipe step was successfully destroyed." }
-      #format.html { redirect_to recipe_recipe_steps_path(@recipe), notice: "Recipe step was successfully destroyed." }
       format.html { redirect_to recipe_path(@recipe), notice: "Recipe step was successfully destroyed." }
       format.json { head :no_content }
     end

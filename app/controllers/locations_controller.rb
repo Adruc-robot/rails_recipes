@@ -7,12 +7,7 @@ class LocationsController < ApplicationController
 
   # GET /locations or /locations.json
   def index
-    #@locations = Location.all
-    if current_user.admin
-      @locations = Location.all.order(name: :desc)
-    else
-      @locations = current_user.locations.or(Location.where(global: "T")).order(name: :desc)
-    end
+    @locations = Location.where("user_id=? or global=?",current_user.id,"T").order(name: :asc)
   end
 
   # GET /locations/1 or /locations/1.json
@@ -21,7 +16,6 @@ class LocationsController < ApplicationController
 
   # GET /locations/new
   def new
-    #@location = Location.new
     @location = current_user.locations.build
   end
 
@@ -31,7 +25,6 @@ class LocationsController < ApplicationController
 
   # POST /locations or /locations.json
   def create
-    #@location = Location.new(location_params)
     @location  = current_user.locations.build(location_params)
 
     respond_to do |format|
