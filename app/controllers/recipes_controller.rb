@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
       #at some point, admin won't want to see all the recipes (hopefully)
       @recipes = Recipe.all.order(name: :asc)
     else
-      @recipes = Recipe.where("user_id=? or global=?",current_user.id,"T").order(name: :asc)
+      @recipes = current_user.recipes.order(name: :asc)
     end
   end
 
