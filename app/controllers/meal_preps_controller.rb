@@ -2,13 +2,13 @@ class MealPrepsController < ApplicationController
   before_action :set_meal_prep, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update, :destroy]
-
   # GET /meal_preps or /meal_preps.json
   def index
-    #@meal_preps = current_user.meal_preps.order(start_time: :asc)
     start_date = params.fetch(:start_date, Date.today).to_date
-    @meal_preps = MealPrep.where(start_time: start_date.beginning_of_week...start_date.end_of_week)
-    #@meal_preps = current_user.meal_preps
+    #used for the calendar
+    @meal_preps = current_user.meal_preps.where(start_time: start_date.beginning_of_week...start_date.end_of_week).includes(:recipe)
+    #used to get the total ingredients
+    @testValue = current_user.meal_preps.where(start_time: start_date.beginning_of_week...start_date.end_of_week).joins(recipe: [ recipe_ingredients: [ :ingredient, :unit ] ] ).group("ingredients.name, units.name").select("sum(recipe_ingredients.amount) as tAmount, units.name as unit, ingredients.name as ingredient")
   end
 
   # GET /meal_preps/1 or /meal_preps/1.json
@@ -19,12 +19,12 @@ class MealPrepsController < ApplicationController
   def new
     #@meal_prep = MealPrep.new
     @meal_prep = current_user.meal_preps.build
-    @recipes = Recipe.where("user_id=? or global=?", current_user.id, "T")
+    @recipes = Recipe.where("user_id=? or global=?", current_user.id, "T").order(name: :asc)
   end
 
   # GET /meal_preps/1/edit
   def edit
-    @recipes = Recipe.where("user_id=? or global=?", current_user.id, "T")
+    @recipes = Recipe.where("user_id=? or global=?", current_user.id, "T").order(name: :asc)
   end
 
   # POST /meal_preps or /meal_preps.json
@@ -70,7 +70,7 @@ class MealPrepsController < ApplicationController
   #-----------------custom stuff
   def correct_user
     @meal_prep = current_user.meal_preps.find_by(id: params[:id])
-    redirect_to recipes_path, notice: "Not authorized!" if @recipe.nil?
+    redirect_to meal_prep_path, notice: "Not authorized!" if @meal_prep.nil?
   end
 
   private

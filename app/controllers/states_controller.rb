@@ -7,9 +7,10 @@ class StatesController < ApplicationController
   # GET /states or /states.json
   def index
     if current_user.admin
-      @states = State.all
+      @states = State.all.order(name: :asc)
     else
-      @states = current_user.states.or(State.where(global: "T"))
+      #@states = current_user.states.or(State.where(global: "T"))
+      @states = State.where("user_id=? or global=?",current_user.id,"T").order(name: :asc)
     end
   end
 

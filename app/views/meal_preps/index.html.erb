@@ -3,10 +3,18 @@
 <h1>Meal preps</h1>
 <%= week_calendar(events: @meal_preps) do |date, meal_preps| %>
   <%= date.day %>
+  <%= date %>
+    <div>
+      <%#= link_to "add meal", new_meal_prep_path(start_time: date.strftime('%Y-%m-%dT%H:%M')) %>
+      <%= link_to "add meal", new_meal_prep_path %>
+    </div>
     <% meal_preps.each do |meal_prep| %>
-      <div>
-        <%= meal_prep.recipe.name %>
+      <div class="testing">
+        <%= link_to meal_prep.recipe.name, meal_prep %>
       </div>
     <% end %>
 <% end %>
-<%= render @meal_preps %>
+
+<% @testValue.each do |t| %>
+  <p><%= t.tAmount.to_s + " " + t.unit + " " + t.ingredient %></p>
+<% end %>
