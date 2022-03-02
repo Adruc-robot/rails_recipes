@@ -7,11 +7,6 @@ class RecipeIngredientsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
   # GET /recipe_ingredients or /recipe_ingredients.json
   def index
-    #if current_user.admin
-      #@recipe_ingredients = RecipeIngredient.all.order(recipe_id: :asc, ingredient_id: :asc)
-    #else
-      #@recipe_ingredients = current_user.recipe_ingredients.or(RecipeIngredient.where(global: "T")).order(recipe_id: :asc, ingredient_id: :asc)
-    #end
     #Change for building recipes. Admins may/may not need to see ALL recipe_ingredients. This change will disallow that - only recipes owned by the user will be seen since @recipe is prefiltered. I will stop tying because I'm clearly overthinking this.
     @recipe_ingredients = @recipe.recipe_ingredients
   end
@@ -22,13 +17,8 @@ class RecipeIngredientsController < ApplicationController
 
   # GET /recipe_ingredients/new
   def new
-    #@recipe_ingredient = RecipeIngredient.new
-    #@recipe_ingredient = current_user.recipe_ingredients.build
-    #@recipes = current_user.recipes.select(:name, :id).order(name: :asc)
-    #@ingredients = current_user.ingredients.or(Ingredient.where(global: "T")).select(:name, :id).order(name: :asc)
-    @ingredients = Ingredient.where("user_id=? or global=?",current_user.id, "T")
-    #@units = current_user.units.or(Unit.where(global: "T")).select(:name, :id).order(name: :asc)
-    @units = Unit.where("user_id=? or global=?",current_user.id, "T")
+    @ingredients = Ingredient.where("user_id=? or global=?",current_user.id, "T").order(name: :asc)
+    @units = Unit.where("user_id=? or global=?",current_user.id, "T").order(name: :asc)
     #leaving ingredients and units as is since they are global. Altering them to trigger off of @recipe would mean no global units or ingredients could be used... I think.
     @recipe_ingredient = @recipe.recipe_ingredients.build
   end
