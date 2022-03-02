@@ -18,12 +18,12 @@
   <!-- need to make this a drop down for now -->
   <div>
     <%= form.label :recipe_id, style: "display: block" %>
-    <%= form.select :recipe_id, @recipes.map { |r| [r.name, r.id] }%>
+    <%= form.select :recipe_id, @recipes.map { |r| [r.name, r.id] }, selected: params[:recipe_id]%>
   </div>
   <div>
     <%= form.label :start_time, style: "display: block" %>
     <%#= form.datetime_select :start_time %>
-    <%= form.datetime_local_field :start_time %>
+    <%= form.datetime_local_field :start_time, value: params[:start_time] %>
   </div>
 
 

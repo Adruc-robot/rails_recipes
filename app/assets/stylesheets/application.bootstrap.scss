@@ -17,7 +17,7 @@
 }
 .recipe {
     border-radius: 3px;
-    color: #ffffff;
+    color: black;
     cursor: pointer;
     flex: 0 25%;
     margin: 0.5rem;
@@ -26,6 +26,12 @@
     font-weight: 600;
     box-shadow: 0 1px 5px 1px rgb(0 0 0 / 10%);
     background: $teal-400;
+    /* new stuff */
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
 }
 .tModal {
     display: grid;

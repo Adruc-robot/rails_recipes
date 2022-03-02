@@ -5,8 +5,8 @@
   <%= date.day %>
   <%= date %>
     <div>
-      <%#= link_to "add meal", new_meal_prep_path(start_time: date.strftime('%Y-%m-%dT%H:%M')) %>
-      <%= link_to "add meal", new_meal_prep_path %>
+      <%= link_to "add meal", new_meal_prep_path(start_time: date.strftime('%Y-%m-%dT%H:%M')) %>
+      <%#= link_to "add meal", new_meal_prep_path %>
     </div>
     <% meal_preps.each do |meal_prep| %>
       <div class="testing">
