@@ -1,20 +1,24 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Meal preps</h1>
-<%= week_calendar(events: @meal_preps) do |date, meal_preps| %>
-  <%= date.day %>
-  <%= date %>
-    <div>
-      <%= link_to "add meal", new_meal_prep_path(start_time: date.strftime('%Y-%m-%dT%H:%M')) %>
-      <%#= link_to "add meal", new_meal_prep_path %>
-    </div>
-    <% meal_preps.each do |meal_prep| %>
-      <div class="testing">
-        <%= link_to meal_prep.recipe.name, meal_prep %>
+<div class="row">
+  <div class="col">
+    <%= week_calendar(events: @meal_preps) do |date, meal_preps| %>
+      <div>
+        <div class="row">
+          <h6 class="col"><%= date.strftime("%b %d (%A)") %></h6><%= link_to new_meal_prep_path(start_time: date.strftime("%Y-%m-%dT%H:%M")), data:{turbo_frame: "zFormModal", controller: "z-form-modal", action: "z-form-modal#showModal"},class:"col-1" do %><i class="bi bi-plus-circle"></i><% end %>
+        </div>
       </div>
+      <% meal_preps.each do |meal_prep| %>
+        <%= render meal_prep %>
+      <% end %>
     <% end %>
-<% end %>
-
-<% @testValue.each do |t| %>
-  <p><%= t.tAmount.to_s + " " + t.unit + " " + t.ingredient %></p>
-<% end %>
+  </div>
+  <div class="col">
+    <ul class="list-group">
+      <% @testValue.each do |t| %>
+        <li class="list-group-item"><%= t.tAmount.to_s + " " + t.unit + " " + t.ingredient %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

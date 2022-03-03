@@ -1,10 +1,12 @@
-<h1>Editing meal prep</h1>
+<%= turbo_frame_tag :zFormModal do %>
+  <div data-controller="z-form-modal" data-action="turbo:submit-end->z-form-modal#submitEnd">
+    <div class="modal-header themeColor">
+      <h5 class="modal-title" id="staticBackdropLabel">Editing meal</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <%= render "form", meal_prep: @meal_prep %>
+  </div>
+<% end %>
 
-<%= render "form", meal_prep: @meal_prep %>
 
-<br>
 
-<div>
-  <%= link_to "Show this meal prep", @meal_prep %> |
-  <%= link_to "Back to meal preps", meal_preps_path %>
-</div>

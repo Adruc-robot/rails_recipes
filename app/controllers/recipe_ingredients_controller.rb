@@ -8,7 +8,7 @@ class RecipeIngredientsController < ApplicationController
   # GET /recipe_ingredients or /recipe_ingredients.json
   def index
     #Change for building recipes. Admins may/may not need to see ALL recipe_ingredients. This change will disallow that - only recipes owned by the user will be seen since @recipe is prefiltered. I will stop tying because I'm clearly overthinking this.
-    @recipe_ingredients = @recipe.recipe_ingredients
+    @recipe_ingredients = @recipe.recipe_ingredients.includes(:ingredient).order("recipe.name ASC, ingredients.name ASC")
   end
 
   # GET /recipe_ingredients/1 or /recipe_ingredients/1.json
@@ -19,7 +19,6 @@ class RecipeIngredientsController < ApplicationController
   def new
     @ingredients = Ingredient.where("user_id=? or global=?",current_user.id, "T").order(name: :asc)
     @units = Unit.where("user_id=? or global=?",current_user.id, "T").order(name: :asc)
-    #leaving ingredients and units as is since they are global. Altering them to trigger off of @recipe would mean no global units or ingredients could be used... I think.
     @recipe_ingredient = @recipe.recipe_ingredients.build
   end
 

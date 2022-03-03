@@ -35,6 +35,8 @@ class MealPrepsController < ApplicationController
 
     respond_to do |format|
       if @meal_prep.save
+#need to figure out actions after save of meal_prep
+
         format.html { redirect_to meal_prep_url(@meal_prep), notice: "Meal prep was successfully created." }
         format.json { render :show, status: :created, location: @meal_prep }
       else

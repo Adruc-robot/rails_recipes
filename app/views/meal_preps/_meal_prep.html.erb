@@ -1,18 +1,6 @@
-<div id="<%= dom_id meal_prep %>">
-  
-  <p>
-    <strong>Start Time:</strong>
-    <%= meal_prep.start_time %>
-  </p>
-
-  <p>
-    <strong>End Time:</strong>
-    <%= meal_prep.end_time %>
-  </p>
-
-  <p>
-    <strong>Recipe:</strong>
-    <%= meal_prep.recipe.name %>
-  </p>
-
+<div id="<%= dom_id meal_prep %>" class="row">
+  <%= meal_prep.recipe.name %>
+  <div class="col">
+      <%= link_to meal_prep, data: {turbo_method: :delete, turbo_confirm: "Delete meal?"} do %><i class="bi bi-trash3"></i><% end %>
+    </div>
 </div>
