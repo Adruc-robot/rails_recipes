@@ -17,9 +17,8 @@
 
     <div>
       <%= form.label :amount, style: "display: block"%>
-      <%= form.text_field :amount %>
+      <%= form.text_field :amount, data:{controller: "unit-conversion"}%>
     </div>
-
     <div>
       <%= form.label :unit_id, style: "display: block" %>
       <%= form.select :unit_id, @units.map { |u| [u.name, u.id] }%>

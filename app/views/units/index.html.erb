@@ -1,35 +1,20 @@
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.css"/>
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.js"></script>
-<%= javascript_include_tag "dt-setup" %>
-<p style="color: green"><%= notice %></p>
-<h1>Units</h1>
-<%= link_to "New unit", new_unit_path %>
-<div id="units" class="content-scroller">
-  <table class="dt-table">
-    <thead>
-      <tr>
-        <th>Unit Name</th>
-        <% if current_user.admin %>
-          <th>User Email (ID)</th>
-          <th>Global</th>
+<%= turbo_frame_tag :zFormModal do %>
+  <div data-controller="z-form-modal" data-action="turbo:submit-end->z-form-modal#submitEnd" class="modal-content">
+    <div class="modal-header themeColor">
+      <h5 class="modal-title" id="staticBackdropLabel">Units List</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <ul class="ingredient-list">
+        <li>
+          <%= link_to "add unit to units list", new_unit_path, data:{turbo_frame: "zFormModal", controller: "z-form-modal", action: "z-form-modal#showModal"}, class: "btn btn-secondary"%>
+        </li>
+        <% if @units.each do |unit| %>
+          <%= render unit %>
+        <% end.empty? %>
+          <li class="noItems">No units</li>
         <% end %>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @units.each do |unit| %>
-        <tr>
-          <td><%= link_to unit.name, unit %></td>
-          <% if current_user.admin %>
-            <td>
-              <%#= User.find_by(id: unit.user_id).email + " (" + unit.user_id.to_s + ")" %>
-              <%= unit.user.email + " (" + unit.user_id.to_s + ")" %>
-            </td>
-            <td><%= unit.global %>
-          <% end %>
-          <td><%= link_to "Delete", unit, data: {turbo_method: :delete, turbo_confirm: "For real?" } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </ul>
+    </div>
+  </div>
+<% end %>

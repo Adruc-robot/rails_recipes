@@ -9,9 +9,9 @@ class LocationsController < ApplicationController
   def index
     #@locations = Location.all
     if current_user.admin
-      @locations = Location.all.order(name: :desc)
+      @locations = Location.all.order(name: :asc)
     else
-      @locations = current_user.locations.or(Location.where(global: "T")).order(name: :desc)
+      @locations = current_user.locations.or(Location.where(global: "T")).order(name: :asc)
     end
   end
 

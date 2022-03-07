@@ -1,18 +1,8 @@
-<div id="<%= dom_id unit %>">
-  <p>
-    <strong>Name:</strong>
-    <%= unit.name %>
-  </p>
-  <% if current_user.admin == "T" %>
-    <p>
-      <strong>User:</strong>
-      <%= unit.user.email + "(" + unit.user_id.to_s + ")" %>
-    </p>
-
-    <p>
-      <strong>Global:</strong>
-      <%= unit.global %>
-    </p>
+<li id="<%= dom_id unit %>">
+  <%= unit.name %>
+  <% if unit.user_id == current_user.id %>
+    <div>
+      <%= link_to edit_unit_path(unit), data:{turbo_frame: "zFormModal", controller: "z-form-modal", action: "z-form-modal#showModal"} do %><i class="bi bi-pencil"></i><% end %><%= link_to [unit], data: {turbo_method: :delete, turbo_confirm: "Delete unit?"} do %><i class="bi bi-trash3"></i><% end %>
+    </div>
   <% end %>
-
-</div>
+</li>

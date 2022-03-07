@@ -1,10 +1,9 @@
-<h1>Editing state</h1>
-
-<%= render "form", state: @state %>
-
-<br>
-
-<div>
-  <%= link_to "Show this state", @state %> |
-  <%= link_to "Back to states", states_path %>
-</div>
+<%= turbo_frame_tag :zFormModal do %>
+  <div data-controller="z-form-modal" data-action="turbo:submit-end->z-form-modal#submitEnd">
+    <div class="modal-header themeColor">
+      <h5 class="modal-title" id="staticBackdropLabel">Editing <%= @state.name %></h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <%= render "form", state: @state %>
+  </div>
+<% end %>

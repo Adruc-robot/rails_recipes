@@ -1,0 +1,5 @@
+<% @recipe_ingredients.each do |ri| %>
+    <%= ri.amount   %>=>
+    <%= Fractional.new(ri.amount).to_f %>
+    ------
+<% end %>

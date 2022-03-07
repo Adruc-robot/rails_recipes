@@ -1,9 +1,9 @@
-<h1>New location</h1>
-
-<%= render "form", location: @location %>
-
-<br>
-
-<div>
-  <%= link_to "Back to locations", locations_path %>
-</div>
+<%= turbo_frame_tag :zFormModal do %>
+  <div data-controller="z-form-modal" data-action="turbo:submit-end->z-form-modal#submitEnd">
+    <div class="modal-header themeColor">
+      <h5 class="modal-title" id="staticBackdropLabel">New location</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <%= render "form", location: @location %>
+  </div>
+<% end %>

@@ -6,9 +6,9 @@ class MealPrepsController < ApplicationController
   def index
     start_date = params.fetch(:start_date, Date.today).to_date
     #used for the calendar
-    @meal_preps = current_user.meal_preps.where(start_time: start_date.beginning_of_week...start_date.end_of_week).includes(:recipe)
+    @meal_preps = current_user.meal_preps.where(start_time: start_date.beginning_of_week...start_date.end_of_week).includes(:recipe).order("meal_preps.start_time")
     #used to get the total ingredients
-    @testValue = current_user.meal_preps.where(start_time: start_date.beginning_of_week...start_date.end_of_week).joins(recipe: [ recipe_ingredients: [ :ingredient, :unit ] ] ).group("ingredients.name, units.name").select("sum(recipe_ingredients.amount) as tAmount, units.name as unit, ingredients.name as ingredient")
+    @testValue = current_user.meal_preps.where(start_time: start_date.beginning_of_week...start_date.end_of_week).joins(recipe: [ recipe_ingredients: [ :ingredient, :unit ] ] ).group("ingredients.name, units.name").select("sum(recipe_ingredients.amount) as tAmount, units.name as unit, ingredients.name as ingredient").order("ingredients.name, units.name")
   end
 
   # GET /meal_preps/1 or /meal_preps/1.json
@@ -36,8 +36,8 @@ class MealPrepsController < ApplicationController
     respond_to do |format|
       if @meal_prep.save
 #need to figure out actions after save of meal_prep
-
-        format.html { redirect_to meal_prep_url(@meal_prep), notice: "Meal prep was successfully created." }
+        format.html { redirect_to meal_preps_url, status: :see_other, notice: "Meal added!" }
+        #format.html { redirect_to meal_prep_url(@meal_prep), notice: "Meal prep was successfully created." }
         format.json { render :show, status: :created, location: @meal_prep }
       else
         format.html { render :new, status: :unprocessable_entity }

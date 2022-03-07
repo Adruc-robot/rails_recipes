@@ -1,34 +1,20 @@
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.css"/>
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.js"></script>
-<%= javascript_include_tag "dt-setup" %>
-<p style="color: green"><%= notice %></p>
-<h1>Locations</h1>
-<%= link_to "New location", new_location_path %>
-<div id="locations" class="content-scroller">
-  <table class="dt-table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <% if current_user.admin == "T" %>
-          <th>User Email (ID)</th>
-          <th>Global</th>
+<%= turbo_frame_tag :zFormModal do %>
+  <div data-controller="z-form-modal" data-action="turbo:submit-end->z-form-modal#submitEnd" class="modal-content">
+    <div class="modal-header themeColor">
+      <h5 class="modal-title" id="staticBackdropLabel">Locations List</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <ul class="ingredient-list">
+        <li>
+          <%= link_to "add location to location list", new_location_path, data:{turbo_frame: "zFormModal", controller: "z-form-modal", action: "z-form-modal#showModal"}, class: "btn btn-secondary"%>
+        </li>
+        <% if @locations.each do |location| %>
+          <%= render location %>
+        <% end.empty? %>
+          <li class="noItems">No locations</li>
         <% end %>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @locations.each do |location| %>
-        <tr>
-          <td><%= link_to location.name, location %></td>
-          <% if current_user.admin == "T" %>
-            <td>
-              <%= location.user.email + " (" + location.user_id.to_s + ")" %>  
-            </td>
-            <td><%= location.global %></td>
-          <% end %>
-            <td><%= link_to "Delete", location, data: {turbo_method: :delete, turbo_confirm: "For real?" } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </ul>
+    </div>
+  </div>
+<% end %>

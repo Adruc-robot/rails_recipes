@@ -30,13 +30,17 @@ class RecipeIngredientsController < ApplicationController
     @units = current_user.units.or(Unit.where(global: "T")).select(:name, :id).order(name: :asc)
   end
 
+  def test
+    @recipe_ingredients = RecipeIngredient.joins(:ingredient).distinct
+  end
+
   # POST /recipe_ingredients or /recipe_ingredients.json
   def create
     #@recipe_ingredient = RecipeIngredient.new(recipe_ingredient_params)
     #@recipe_ingredient = current_user.recipe_ingredients.build(recipe_ingredient_params)
     #again, dumping the current_user req on recipe_ingredients
     @recipe_ingredient = @recipe.recipe_ingredients.build(recipe_ingredient_params)
-
+    @recipe_ingredient.damount = Fractional.new(@recipe_ingredient.amount).to_f
     respond_to do |format|
       if @recipe_ingredient.save
         format.turbo_stream do
@@ -55,6 +59,7 @@ class RecipeIngredientsController < ApplicationController
 
   # PATCH/PUT /recipe_ingredients/1 or /recipe_ingredients/1.json
   def update
+    @recipe_ingredient.damount = Fractional.new(@recipe_ingredient.amount).to_f
     respond_to do |format|
       if @recipe_ingredient.update(recipe_ingredient_params)
         format.turbo_stream do
@@ -91,6 +96,7 @@ class RecipeIngredientsController < ApplicationController
       redirect_to recipes_path, notice: "Not authorized!" if @recipe_ingredient.nil?
     end
     def get_recipe
+      #@recipe = Recipe.find(params[:recipe_id])
       @recipe = Recipe.find(params[:recipe_id])
     end
     # Use callbacks to share common setup or constraints between actions.
@@ -100,6 +106,6 @@ class RecipeIngredientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_ingredient_params
-      params.require(:recipe_ingredient).permit(:recipe_id, :ingredient_id, :amount, :unit_id, :prep_instructions, :user_id)
+      params.require(:recipe_ingredient).permit(:recipe_id, :ingredient_id, :amount, :unit_id, :prep_instructions, :user_id, :damount)
     end
 end

@@ -10,23 +10,24 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.number_field :user_id, id: :state_user_id, value: current_user.id, type: :hidden %>
-  </div>
-
-  <% if current_user.admin == "T" %>
+  <div class="modal-body">
     <div>
-      <%= form.label :global %> <br />
-      <%= form.select :global, [["True","T"],["False","F"]] %>
+      <%= form.label :name, style: "display: block" %>
+      <%= form.text_field :name %>
     </div>
-  <% end %>
-  <div>
-    <%= form.submit %>
+
+    <div>
+      <%= form.number_field :user_id, id: :state_user_id, value: current_user.id, type: :hidden %>
+    </div>
+
+    <% if current_user.admin == "T" %>
+      <div>
+        <%= form.label :global %> <br />
+        <%= form.select :global, [["True","T"],["False","F"]] %>
+      </div>
+    <% end %>
+  </div>
+  <div class="modal-footer">
+    <%= form.submit class: "btn btn-secondary" %>
   </div>
 <% end %>

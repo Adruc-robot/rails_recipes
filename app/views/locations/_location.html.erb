@@ -1,18 +1,10 @@
-<div id="<%= dom_id location %>">
-  <p>
-    <strong>Name:</strong>
-    <%= location.name %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= location.user_id %>
-  </p>
-  <% if current_user.admin == "T" %>
-    <p>
-      <strong>Global:</strong>
-      <%= location.global %>
-    </p>
+<li id="<%= dom_id location %>">
+  <%= location.name %>
+  <% if location.user_id == current_user.id %>
+    <div>
+      <%= link_to edit_ingredient_path(location), data:{turbo_frame: "zFormModal", controller: "z-form-modal", action: "z-form-modal#showModal"} do %><i class="bi bi-pencil"></i><% end %><%= link_to [location], data: {turbo_method: :delete, turbo_confirm: "Delete ingredient?"} do %><i class="bi bi-trash3"></i><% end %>
+    </div>
   <% end %>
+</li>
 
-</div>
+

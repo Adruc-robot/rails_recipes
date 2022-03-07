@@ -9,27 +9,16 @@
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Sign Out", destroy_user_session_path, data: {turbo_method: :delete }, class:"nav-link" %>
+            <%= link_to "Locations", locations_path, data:{turbo_frame: "zFormModal", controller: "z-form-modal", action: "z-form-modal#showModal"}, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to current_user.email + " (Edit Profile)", edit_user_registration_path, class:"nav-link"%>
+            <%= link_to "Meal Prep", meal_preps_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Locations", locations_path, class: "nav-link" %>
-          </li>
+            <%= link_to "States", states_path, data:{turbo_frame: "zFormModal", controller: "z-form-modal", action: "z-form-modal#showModal"}, class: "nav-link" %>
+          </li>          
           <li class="nav-item">
-            <%= link_to "Calendar", meal_preps_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "NMP", new_meal_prep_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "States", states_path, class: "nav-link" %>
-          </li>
-          
-          
-          <li class="nav-item">
-            <%= link_to "Units", units_path, class: "nav-link" %>
+            <%= link_to "Units", units_path, data:{turbo_frame: "zFormModal", controller: "z-form-modal", action: "z-form-modal#showModal"}, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Ingredients", ingredients_path, data:{turbo_frame: "zFormModal", controller: "z-form-modal", action: "z-form-modal#showModal"}, class: "nav-link" %>
@@ -37,6 +26,12 @@
           </li>
           <li class="nav-item">
             <%= link_to "Recipe Maintenance", recipes_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign Out", destroy_user_session_path, data: {turbo_method: :delete }, class:"nav-link" %>
+          </li>
+          <li class="nav-item row">
+            <%= link_to edit_user_registration_path, class:"nav-link col" do %><i class="bi bi-gear-fill"></i><% end %>
           </li>
         <% else %>
             <li class="nav-item">

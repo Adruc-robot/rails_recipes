@@ -27,9 +27,8 @@ gem "jbuilder"
 gem "sassc-rails"
 gem "cssbundling-rails"
 gem 'simple_calendar', '~> 2.4', '>= 2.4.3'
-
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
-
+gem 'fractional', '~> 1.2', '>= 1.2.1'
 
 gem "bootsnap", require: false
 gem 'devise', '~> 4.8', '>= 4.8.1'
