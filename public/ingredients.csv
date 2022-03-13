@@ -1,0 +1,199 @@
+id,name,state_id,location_id,user_id,global
+1,Alaskan salmon,7,14,2,T
+2,Apple Cider Vinegar,4,7,2,T
+3,Asparagus,7,17,2,T
+4,Avocado,7,17,2,T
+5,Baby Kale,7,17,2,T
+6,Baby Spinach,7,17,2,T
+7,Baby arugula,7,17,2,T
+8,Baby carrot,7,17,2,T
+9,Balsamic Vinegar,4,7,2,T
+10,Basil,7,17,2,T
+11,Beef Stew Meat,7,14,2,T
+12,Beef broth,4,3,2,T
+13,Black Beans,7,4,2,T
+14,Black Pepper,7,19,2,T
+15,Boneless beef chuck roast,7,14,2,T
+16,Broccoli,7,17,2,T
+17,Broccoli Florets,7,17,2,T
+18,Broccolini,7,17,2,T
+19,Brown rice,7,11,2,T
+20,Brussels sprouts,7,17,2,T
+21,Burrata Cheese,7,5,2,T
+22,Butter,7,8,2,T
+23,Butter lettuce,7,17,2,T
+24,Cabbage,7,17,2,T
+192,Canola oil,4,3,2,T
+25,Carrot,7,17,2,T
+26,Cauliflower,7,17,2,T
+27,Celery,7,17,2,T
+28,Champagne Vinegar,4,3,2,T
+29,"Cheddar cheese, shredded",7,5,2,T
+30,Cherry jam,7,7,2,T
+31,Cherry tomato,7,17,2,T
+32,Chicken Breast,7,14,2,T
+33,Chicken Broth,4,4,2,T
+34,Chicken stock concentrate,7,4,2,T
+35,Chickpeas,7,4,2,T
+36,Chili Powder,6,19,2,T
+37,Chives,7,17,2,T
+38,Ciabatta rolls,7,2,2,T
+39,Cilantro,7,17,2,T
+40,Coconut Milk,4,11,2,T
+195,Coconut Oil,4,11,2,T
+41,Coconut aminos,4,11,2,T
+42,Cooking oil,4,3,2,T
+43,Corn,7,4,2,T
+44,Corn tortillas,7,11,2,T
+45,Cornstarch,7,2,2,T
+46,Corriander,7,19,2,T
+47,Couscous,7,11,2,T
+48,Cremini mushroom,7,17,2,T
+49,Crumbled Goat Cheese,7,5,2,T
+51,Crushed Tomatoes,7,4,2,T
+50,Crushed red pepper,7,19,2,T
+52,Cucumber,7,17,2,T
+53,Cumin,7,19,2,T
+54,Curry powder,7,19,2,T
+55,Dijon mustard,4,7,2,T
+198,Dill,7,19,2,T
+56,Dried Cranberries,7,3,2,T
+57,Duck Fat,7,3,2,T
+58,Edemame,7,17,2,T
+59,Eggplant,7,17,2,T
+60,Eggs,7,8,2,T
+61,English muffins,7,2,2,T
+62,Escarole,7,17,2,T
+63,Fennel,7,19,2,T
+64,Fennel seed,7,19,2,T
+65,Feta Cheese,7,5,2,T
+66,Fish Sauce,4,11,2,T
+67,Flat bread,7,2,2,T
+68,Flour,6,3,2,T
+69,Garlic cloves,7,17,2,T
+70,Garlic herb butter,7,8,2,T
+71,Garlic powder,6,19,2,T
+72,Ghee,7,11,2,T
+73,Ginger,7,17,2,T
+74,Gnocchi,7,15,2,T
+75,Goat cheese,7,5,2,T
+76,Grape Tomatoes,7,17,2,T
+77,Greek Yogurt,7,8,2,T
+79,Green Garbanzo Beans,7,4,2,T
+80,Green Onion,7,17,2,T
+78,Green beans,7,17,2,T
+83,Ground Chicken,7,16,2,T
+196,Ground Turkey,7,14,2,T
+81,Ground beef,7,14,2,T
+82,Ground beef and lamb,7,14,2,T
+84,Ground cumin,6,19,2,T
+85,Gruyère cheese,7,5,2,T
+86,Heavy cream,4,8,2,T
+87,Herbes de Provence,7,19,2,T
+88,Hoisin sauce,4,11,2,T
+89,Honey,4,3,2,T
+90,Italian Sausage,7,14,2,T
+91,Italian Seasoning,7,19,2,T
+92,Jalapeño ,7,17,2,T
+93,Jicama,7,17,2,T
+94,Kidney Beans,7,4,2,T
+95,Kosher salt,7,19,2,T
+96,Leeks,7,17,2,T
+97,Lemon,7,17,2,T
+98,Lemon juice,4,3,2,T
+99,Lentils,7,11,2,T
+100,Lime,7,17,2,T
+101,Lime Juice,4,17,2,T
+102,Linguine,7,15,2,T
+103,Long life noodles,7,11,2,T
+104,Masa Harina,7,11,2,T
+105,Masala,6,19,2,T
+106,Mayonnaise,7,7,2,T
+107,Mint,7,17,2,T
+108,Mirin,4,11,2,T
+109,Monterey Jack Cheese,7,5,2,T
+110,Mozzarella cheese,7,5,2,T
+111,"Mozzerella cheese, shredded",7,5,2,T
+112,Mushroom,7,17,2,T
+113,Naan,7,2,2,T
+114,Olive Oil,4,3,2,T
+115,Olives,7,7,2,T
+116,Onion,7,17,2,T
+117,Onion powder,6,19,2,T
+120,Oregano,7,17,2,T
+118,"Oregano, dried",7,19,2,T
+119,Orzo Pasta,7,15,2,T
+121,Oyster Mushrooms,7,17,2,T
+122,Pancetta,7,14,2,T
+123,Panko breadcrumbs,7,11,2,T
+124,Paprika,6,19,2,T
+125,Parmesan cheese,7,5,2,T
+126,Parsley,7,19,2,T
+127,Pattypan Squash,7,17,2,T
+129,Pea Tendrils,7,17,2,T
+128,Pea shoots,7,17,2,T
+130,Peach,7,17,2,T
+131,Pearl Onions,7,17,2,T
+132,Peas,7,17,2,T
+133,Pecorino cheese,7,5,2,T
+194,Pepperoncini,7,7,2,T
+134,Pesto,5,15,2,T
+135,Pine nuts,7,3,2,T
+136,Pistachios,7,18,2,T
+137,Pizza Dough,6,3,2,T
+138,Pizza Sauce,7,7,2,T
+139,Plain greek yogurt,7,8,2,T
+140,Plum Tomatoes,7,17,2,T
+141,Porcini Trumpet Pasta,7,15,2,T
+142,Pork chops,7,14,2,T
+143,Portobello mushroom,7,17,2,T
+144,Queso Fresco,7,8,2,T
+193,Ranch seasoning mix,5,7,2,T
+145,Red Bell Pepper,7,17,2,T
+146,Red Curry Paste,5,11,2,T
+147,Red Onion,7,17,2,T
+148,Red wine vinegar,4,3,2,T
+149,Rice flour,6,3,2,T
+150,Rice wine vinegar,4,3,2,T
+151,Rigatoni,7,15,2,T
+152,Roma Tomato,7,17,2,T
+153,Romaine lettuce heart,7,17,2,T
+154,Romano Cheese,7,5,2,T
+155,"Rosemary, dried",7,17,2,T
+156,Rotisserie chicken,7,10,2,T
+157,Russet potato,7,17,2,T
+158,Salsa,7,11,2,T
+159,Scallions,7,17,2,T
+160,Sea salt,7,19,2,T
+161,Sesame oil,4,3,2,T
+162,Shallot,7,17,2,T
+163,Shaoxing rice  wine,4,3,2,T
+164,Soy Sauce,4,3,2,T
+165,Spaghetti Squash,7,17,2,T
+166,Spring Mix,7,17,2,T
+167,Sriracha,7,11,2,T
+168,Sugar,7,3,2,T
+169,Sweet Pea Lettuce Mix,7,17,2,T
+170,Taco Seasoning,7,11,2,T
+171,Taleggio Cheese,7,5,2,T
+172,Tarragon,7,17,2,T
+173,"Thyme, dried",7,19,2,T
+174,"Thyme, fresh",7,17,2,T
+175,Tomato Paste,7,4,2,T
+197,Tomato sauce,4,4,2,T
+176,Tomatoes,7,17,2,T
+177,Tortilla Chips,7,18,2,T
+178,Truffle oil,4,3,2,T
+179,Vegetable oil,4,3,2,T
+180,Vegetable stock,7,3,2,T
+181,Water,4,3,2,T
+183,White Sesame Seeds,7,11,2,T
+182,White beans,7,4,2,T
+184,White wine,4,3,2,T
+185,Whole milk,4,8,2,T
+186,Whole water chestnuts,7,11,2,T
+187,Yellow Onion,7,17,2,T
+188,Yellow Squash,7,17,2,T
+189,Yukon gold potatoes,7,17,2,T
+190,Yukon gold potatoes,7,17,2,T
+191,Zucchini,7,17,2,T

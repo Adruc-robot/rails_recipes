@@ -1,0 +1,199 @@
+name,state_id,location_id,user_id,global
+Alaskan salmon,7,14,2,T
+Apple Cider Vinegar,4,7,2,T
+Asparagus,7,17,2,T
+Avocado,7,17,2,T
+Baby Kale,7,17,2,T
+Baby Spinach,7,17,2,T
+Baby arugula,7,17,2,T
+Baby carrot,7,17,2,T
+Balsamic Vinegar,4,7,2,T
+Basil,7,17,2,T
+Beef Stew Meat,7,14,2,T
+Beef broth,4,3,2,T
+Black Beans,7,4,2,T
+Black Pepper,7,19,2,T
+Boneless beef chuck roast,7,14,2,T
+Broccoli,7,17,2,T
+Broccoli Florets,7,17,2,T
+Broccolini,7,17,2,T
+Brown rice,7,11,2,T
+Brussels sprouts,7,17,2,T
+Burrata Cheese,7,5,2,T
+Butter,7,8,2,T
+Butter lettuce,7,17,2,T
+Cabbage,7,17,2,T
+Carrot,7,17,2,T
+Cauliflower,7,17,2,T
+Celery,7,17,2,T
+Champagne Vinegar,4,3,2,T
+"Cheddar cheese, shredded",7,5,2,T
+Cherry jam,7,7,2,T
+Cherry tomato,7,17,2,T
+Chicken Breast,7,14,2,T
+Chicken Broth,4,4,2,T
+Chicken stock concentrate,7,4,2,T
+Chickpeas,7,4,2,T
+Chili Powder,6,19,2,T
+Chives,7,17,2,T
+Ciabatta rolls,7,2,2,T
+Cilantro,7,17,2,T
+Coconut Milk,4,11,2,T
+Coconut aminos,4,11,2,T
+Cooking oil,4,3,2,T
+Corn,7,4,2,T
+Corn tortillas,7,11,2,T
+Cornstarch,7,2,2,T
+Corriander,7,19,2,T
+Couscous,7,11,2,T
+Cremini mushroom,7,17,2,T
+Crumbled Goat Cheese,7,5,2,T
+Crushed red pepper,7,19,2,T
+Crushed Tomatoes,7,4,2,T
+Cucumber,7,17,2,T
+Cumin,7,19,2,T
+Curry powder,7,19,2,T
+Dijon mustard,4,7,2,T
+Dried Cranberries,7,3,2,T
+Duck Fat,7,3,2,T
+Edemame,7,17,2,T
+Eggplant,7,17,2,T
+Eggs,7,8,2,T
+English muffins,7,2,2,T
+Escarole,7,17,2,T
+Fennel,7,19,2,T
+Fennel seed,7,19,2,T
+Feta Cheese,7,5,2,T
+Fish Sauce,4,11,2,T
+Flat bread,7,2,2,T
+Flour,6,3,2,T
+Garlic cloves,7,17,2,T
+Garlic herb butter,7,8,2,T
+Garlic powder,6,19,2,T
+Ghee,7,11,2,T
+Ginger,7,17,2,T
+Gnocchi,7,15,2,T
+Goat cheese,7,5,2,T
+Grape Tomatoes,7,17,2,T
+Greek Yogurt,7,8,2,T
+Green beans,7,17,2,T
+Green Garbanzo Beans,7,4,2,T
+Green Onion,7,17,2,T
+Ground beef,7,14,2,T
+Ground beef and lamb,7,14,2,T
+Ground Chicken,7,16,2,T
+Ground cumin,6,19,2,T
+Gruyère cheese,7,5,2,T
+Heavy cream,4,8,2,T
+Herbes de Provence,7,19,2,T
+Hoisin sauce,4,11,2,T
+Honey,4,3,2,T
+Italian Sausage,7,14,2,T
+Italian Seasoning,7,19,2,T
+Jalapeño ,7,17,2,T
+Jicama,7,17,2,T
+Kidney Beans,7,4,2,T
+Kosher salt,7,19,2,T
+Leeks,7,17,2,T
+Lemon,7,17,2,T
+Lemon juice,4,3,2,T
+Lentils,7,11,2,T
+Lime,7,17,2,T
+Lime Juice,4,17,2,T
+Linguine,7,15,2,T
+Long life noodles,7,11,2,T
+Masa Harina,7,11,2,T
+Masala,6,19,2,T
+Mayonnaise,7,7,2,T
+Mint,7,17,2,T
+Mirin,4,11,2,T
+Monterey Jack Cheese,7,5,2,T
+Mozzarella cheese,7,5,2,T
+"Mozzerella cheese, shredded",7,5,2,T
+Mushroom,7,17,2,T
+Naan,7,2,2,T
+Olive Oil,4,3,2,T
+Olives,7,7,2,T
+Onion,7,17,2,T
+Onion powder,6,19,2,T
+"Oregano, dried",7,19,2,T
+Orzo Pasta,7,15,2,T
+Oregano,7,17,2,T
+Oyster Mushrooms,7,17,2,T
+Pancetta,7,14,2,T
+Panko breadcrumbs,7,11,2,T
+Paprika,6,19,2,T
+Parmesan cheese,7,5,2,T
+Parsley,7,19,2,T
+Pattypan Squash,7,17,2,T
+Pea shoots,7,17,2,T
+Pea Tendrils,7,17,2,T
+Peach,7,17,2,T
+Pearl Onions,7,17,2,T
+Peas,7,17,2,T
+Pecorino cheese,7,5,2,T
+Pesto,5,15,2,T
+Pine nuts,7,3,2,T
+Pistachios,7,18,2,T
+Pizza Dough,6,3,2,T
+Pizza Sauce,7,7,2,T
+Plain greek yogurt,7,8,2,T
+Plum Tomatoes,7,17,2,T
+Porcini Trumpet Pasta,7,15,2,T
+Pork chops,7,14,2,T
+Portobello mushroom,7,17,2,T
+Queso Fresco,7,8,2,T
+Red Bell Pepper,7,17,2,T
+Red Curry Paste,5,11,2,T
+Red Onion,7,17,2,T
+Red wine vinegar,4,3,2,T
+Rice flour,6,3,2,T
+Rice wine vinegar,4,3,2,T
+Rigatoni,7,15,2,T
+Roma Tomato,7,17,2,T
+Romaine lettuce heart,7,17,2,T
+Romano Cheese,7,5,2,T
+"Rosemary, dried",7,17,2,T
+Rotisserie chicken,7,10,2,T
+Russet potato,7,17,2,T
+Salsa,7,11,2,T
+Scallions,7,17,2,T
+Sea salt,7,19,2,T
+Sesame oil,4,3,2,T
+Shallot,7,17,2,T
+Shaoxing rice  wine,4,3,2,T
+Soy Sauce,4,3,2,T
+Spaghetti Squash,7,17,2,T
+Spring Mix,7,17,2,T
+Sriracha,7,11,2,T
+Sugar,7,3,2,T
+Sweet Pea Lettuce Mix,7,17,2,T
+Taco Seasoning,7,11,2,T
+Taleggio Cheese,7,5,2,T
+Tarragon,7,17,2,T
+"Thyme, dried",7,19,2,T
+"Thyme, fresh",7,17,2,T
+Tomato Paste,7,4,2,T
+Tomatoes,7,17,2,T
+Tortilla Chips,7,18,2,T
+Truffle oil,4,3,2,T
+Vegetable oil,4,3,2,T
+Vegetable stock,7,3,2,T
+Water,4,3,2,T
+White beans,7,4,2,T
+White Sesame Seeds,7,11,2,T
+White wine,4,3,2,T
+Whole milk,4,8,2,T
+Whole water chestnuts,7,11,2,T
+Yellow Onion,7,17,2,T
+Yellow Squash,7,17,2,T
+Yukon gold potatoes,7,17,2,T
+Yukon gold potatoes,7,17,2,T
+Zucchini,7,17,2,T
+Canola oil,4,3,2,T
+Ranch seasoning mix,5,7,2,T
+Pepperoncini,7,7,2,T
+Coconut Oil,4,11,2,T
+Ground Turkey,7,14,2,T
+Tomato sauce,4,4,2,T
+Dill,7,19,2,T
